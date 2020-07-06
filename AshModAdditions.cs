@@ -1,4 +1,7 @@
+using Terraria;
 using Terraria.ModLoader;
+using AshModAdditions.Items.MusicBoxes;
+using AshModAdditions.Tiles.MusicBoxes;
 
 namespace AshModAdditions
 {
@@ -9,6 +12,8 @@ namespace AshModAdditions
         public override void Load()
         {
             instance = this;
+            AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Typhoon_Warning"), ModContent.ItemType<TyphoonMusicBox>(), ModContent.TileType<TyphoonMusicBoxTile>());
+            AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Killography"), ModContent.ItemType<KilographyMusicBox>(), ModContent.TileType<KilographyMusicBoxTile>());
         }
 
         public override void Unload()
