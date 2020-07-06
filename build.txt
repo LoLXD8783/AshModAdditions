@@ -1,0 +1,3 @@
+displayName = Ash mod additions
+author = RedyDashy
+version = 0.1
