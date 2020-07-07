@@ -1,4 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -6,26 +10,24 @@ using AshModAdditions.Items.Materials;
 
 namespace AshModAdditions.Items.Weapons.Melee
 {
-    public class CombiniteSword : ModItem
+    class RedashSickle : ModItem
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Combinite Sword");
+            DisplayName.SetDefault("Redash Sickle");
         }
 
         public override void SetDefaults()
         {
-            item.melee = true;
-            item.useTurn = true;
-            item.useTime = 15;
-            item.useAnimation = 15;
+            item.damage = 16;
+            item.knockBack = 8;
+            item.useTime = 13;
+            item.useAnimation = 13;
+            item.width = 68;
+            item.height = 68;
             item.useStyle = ItemUseStyleID.SwingThrow;
-            item.scale = 1.5f;
-            item.crit = 7;
-            item.damage = 42;
-            item.width = 60;
-            item.height = 58;
-            item.value = Item.sellPrice(gold: 10);
+            item.autoReuse = true;
+            item.useTurn = true;
 
             item.UseSound = SoundID.Item18;
         }
@@ -33,7 +35,7 @@ namespace AshModAdditions.Items.Weapons.Melee
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ModContent.ItemType<CombiniteBar>(), 15);
+            recipe.AddIngredient(ModContent.ItemType<RedashBar>());
             recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
             recipe.AddRecipe();
