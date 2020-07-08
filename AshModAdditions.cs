@@ -14,6 +14,10 @@ namespace AshModAdditions
         {
             instance = this;
             if (Main.dedServ) return; // below things that shouldn't load on servers
+            AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Pretty_Gamer_Boss"), ModContent.ItemType<SkeletronMusicBox>(), ModContent.TileType<SkeletronMusicBoxTile>());
+            AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Wall_Of_Flesh_Theme_-_Ashmod"), ModContent.ItemType<WallOfFleshMusicBox>(), ModContent.TileType<WallOfFleshMusicBoxTile>());
+            AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Destroyer_Theme_-_"), ModContent.ItemType<TheDestroyerMusicBox>(), ModContent.TileType<TheDestroyerMusicBoxTile>());
+            AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Skeletron_Prime_Is_American"), ModContent.ItemType<SkeletronPrimeMusicBox>(), ModContent.TileType<SkeletronPrimeMusicBoxTile>());
             AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Typhoon_Warning"), ModContent.ItemType<TyphoonMusicBox>(), ModContent.TileType<TyphoonMusicBoxTile>());
             AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Killography"), ModContent.ItemType<KilographyMusicBox>(), ModContent.TileType<KilographyMusicBoxTile>());
         }
