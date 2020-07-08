@@ -19,6 +19,7 @@ namespace AshModAdditions.Items.Weapons.Ranged
         {
             item.autoReuse = true;
             item.ranged = true;
+            item.noMelee = true;
             item.damage = 30;
             item.useTime = 15;
             item.useAnimation = 15;
