@@ -10,15 +10,15 @@ namespace AshModAdditions.Items.Materials
     {
         public override void SetStaticDefaults()
         {
-            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(10, 17));
+            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(5, 17));
             DisplayName.SetDefault("Radash Bar");
         }
 
         public override void SetDefaults()
         {
             item.material = true;
-            item.width = 54;
-            item.height = 43;
+            item.width = 30;
+            item.height = 24;
             item.maxStack = 99;
         }
 

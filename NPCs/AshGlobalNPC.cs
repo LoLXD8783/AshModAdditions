@@ -17,7 +17,7 @@ namespace AshModAdditions.NPCs
                 case NPCID.DarkMummy:
                 case NPCID.LightMummy:
                     if(Main.rand.NextBool(5)) // 20% or 1/5
-                    Item.NewItem(npc.getRect(), ModContent.ItemType<Scroll>());
+                        Item.NewItem(npc.getRect(), ModContent.ItemType<Scroll>());
                     break;
 
                 case NPCID.BloodZombie:
