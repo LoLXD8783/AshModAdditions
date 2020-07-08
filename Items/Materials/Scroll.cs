@@ -4,19 +4,19 @@ using Terraria.ModLoader;
 
 namespace AshModAdditions.Items.Materials
 {
-    public class UnholiteBar : ModItem
+    public class Scroll : ModItem
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Unholite Bar");
+            DisplayName.SetDefault("Scroll");
         }
 
         public override void SetDefaults()
         {
             item.material = true;
-            item.maxStack = 99;
-            item.width = 60;
-            item.height = 48;
+            item.maxStack = 999;
+            item.width = 36;
+            item.height = 36;
         }
     }
 }

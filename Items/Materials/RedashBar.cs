@@ -19,7 +19,17 @@ namespace AshModAdditions.Items.Materials
             item.material = true;
             item.width = 54;
             item.height = 43;
-            item.maxStack = 999;
+            item.maxStack = 99;
+        }
+
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(ItemID.HellstoneBar);
+            recipe.AddIngredient(ModContent.ItemType<CombiniteBar>());
+            recipe.AddTile(TileID.Furnaces);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
         }
     }
 }

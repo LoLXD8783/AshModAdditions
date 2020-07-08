@@ -1,5 +1,6 @@
 ﻿using System;
 using Terraria;
+using Terraria.GameContent.Events;
 using Terraria.ID;
 using Terraria.ModLoader;
 using AshModAdditions.Items.Materials;
@@ -10,9 +11,31 @@ namespace AshModAdditions.NPCs
     {
         public override void NPCLoot(NPC npc)
         {
-            if(npc.type == NPCID.WallofFlesh)
+            switch (npc.type)
             {
-                Item.NewItem(npc.getRect(), ModContent.ItemType<CombiniteBar>(), Main.rand.Next(6, 10));
+                case NPCID.Mummy:
+                case NPCID.DarkMummy:
+                case NPCID.LightMummy:
+                    if(Main.rand.NextBool(5)) // 20% or 1/5
+                    Item.NewItem(npc.getRect(), ModContent.ItemType<Scroll>());
+                    break;
+
+                case NPCID.BloodZombie:
+                case NPCID.Drippler:
+                case NPCID.TheGroom:
+                case NPCID.TheBride:
+                    if (Main.hardMode)
+                        Item.NewItem(npc.getRect(), ModContent.ItemType<UnholyBlood>(), Main.rand.Next(5, 11));
+                    break;
+
+                case NPCID.WallofFlesh:
+                        Item.NewItem(npc.getRect(), ModContent.ItemType<CombiniteBar>(), Main.rand.Next(6, 11));
+                    break;
+
+                case NPCID.Retinazer:
+                case NPCID.Spazmatism:
+                    Item.NewItem(npc.getRect(), ModContent.ItemType<UnholiteBar>(), Main.rand.Next(5, 8));
+                    break;
             }
         }
     }

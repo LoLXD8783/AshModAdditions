@@ -6,7 +6,7 @@ using Terraria.ObjectData;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using AshModAdditions.Items;
+using AshModAdditions.Items.Tiles;
 
 namespace AshModAdditions.Tiles
 {
@@ -33,6 +33,7 @@ namespace AshModAdditions.Tiles
             disableSmartCursor = true;
             adjTiles = new int[] { TileID.Furnaces };
         }
+
         public override void KillMultiTile(int i, int j, int frameX, int frameY)
         {
             Item.NewItem(i * 16, j * 16, 32, 48, ModContent.ItemType<UnholyResearchStation>());

@@ -19,7 +19,7 @@ namespace AshModAdditions.Items.Weapons.Ranged
         {
             item.autoReuse = true;
             item.ranged = true;
-            item.damage = 20;
+            item.damage = 30;
             item.useTime = 15;
             item.useAnimation = 15;
             item.shoot = 10;
@@ -42,9 +42,10 @@ namespace AshModAdditions.Items.Weapons.Ranged
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ModContent.ItemType<CombiniteBar>(), 13);
+            recipe.AddIngredient(ModContent.ItemType<CombiniteBar>(), 10);
             recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
+            recipe.AddRecipe();
         }
     }
 }

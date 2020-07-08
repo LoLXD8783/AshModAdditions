@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -10,7 +6,7 @@ using AshModAdditions.Items.Materials;
 
 namespace AshModAdditions.Items.Weapons.Melee
 {
-    class RedashSickle : ModItem
+    public class RedashSickle : ModItem
     {
         public override void SetStaticDefaults()
         {
@@ -19,7 +15,7 @@ namespace AshModAdditions.Items.Weapons.Melee
 
         public override void SetDefaults()
         {
-            item.damage = 16;
+            item.damage = 70;
             item.knockBack = 8;
             item.useTime = 13;
             item.useAnimation = 13;
@@ -29,13 +25,13 @@ namespace AshModAdditions.Items.Weapons.Melee
             item.autoReuse = true;
             item.useTurn = true;
 
-            item.UseSound = SoundID.Item18;
+            item.UseSound = SoundID.Item34;
         }
 
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ModContent.ItemType<RedashBar>());
+            recipe.AddIngredient(ModContent.ItemType<RedashBar>(), 18);
             recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
             recipe.AddRecipe();

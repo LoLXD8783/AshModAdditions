@@ -2,15 +2,17 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using AshModAdditions.Items.Materials;
 using AshModAdditions.Tiles;
 
-namespace AshModAdditions.Items
+namespace AshModAdditions.Items.Tiles
 {
     public class UnholyResearchStation : ModItem
     {
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Unholy Research Station");
+            Tooltip.SetDefault("A table used to create horrible things of destruction");
         }
 
         public override void SetDefaults()
@@ -22,6 +24,15 @@ namespace AshModAdditions.Items
             item.useStyle = ItemUseStyleID.SwingThrow;
             item.createTile = ModContent.TileType<UnholyResearchStationTile>();
             item.consumable = true;
+        }
+
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(ModContent.ItemType<UnholiteBar>(), 10);
+            recipe.AddTile(TileID.Anvils);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
         }
     }
 }

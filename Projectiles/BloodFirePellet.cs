@@ -12,8 +12,8 @@ namespace AshModAdditions.Projectiles
             projectile.height = 30;
             // drawOffsetX = 1;
             projectile.friendly = true;
-            projectile.width = 110;
-            projectile.height = 30;
+            projectile.width = 22;
+            projectile.height = 6;
         }
 
         public override void AI()
