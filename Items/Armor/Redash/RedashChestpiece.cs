@@ -1,5 +1,7 @@
 ﻿using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
+using AshModAdditions.Items.Materials;
 
 namespace AshModAdditions.Items.Armor.Redash
 {
@@ -14,7 +16,7 @@ namespace AshModAdditions.Items.Armor.Redash
 
         public override void SetDefaults()
         {
-            item.defense = 38;
+            item.defense = 33;
             item.width = 28;
             item.height = 18;
         }
@@ -27,7 +29,8 @@ namespace AshModAdditions.Items.Armor.Redash
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            // Add ingredients and tiles
+            recipe.AddIngredient<RedashBar>(25);
+            recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

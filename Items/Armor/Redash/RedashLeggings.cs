@@ -16,7 +16,7 @@ namespace AshModAdditions.Items.Armor.Redash
 
         public override void SetDefaults()
         {
-            item.defense = 26;
+            item.defense = 21;
             item.width = 20;
             item.height = 14;
         }
@@ -29,7 +29,7 @@ namespace AshModAdditions.Items.Armor.Redash
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient<RedashBar>(10);
+            recipe.AddIngredient<RedashBar>(15);
             recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
             recipe.AddRecipe();
