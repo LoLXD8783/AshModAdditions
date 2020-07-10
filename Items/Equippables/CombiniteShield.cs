@@ -33,7 +33,7 @@ namespace AshModAdditions.Items.Equippables
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.CobaltShield);
-            recipe.AddIngredient(ModContent.ItemType<CombiniteBar>(), 10);
+            recipe.AddIngredient<CombiniteBar>(10);
             recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
             recipe.AddRecipe();

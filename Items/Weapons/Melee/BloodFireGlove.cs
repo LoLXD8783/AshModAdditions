@@ -36,8 +36,8 @@ namespace AshModAdditions.Items.Weapons.Melee
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ModContent.ItemType<UnholiteBar>(), 15);
-            recipe.AddTile(ModContent.TileType<UnholyResearchStationTile>());
+            recipe.AddIngredient<UnholiteBar>(15);
+            recipe.AddTile<UnholyResearchStationTile>();
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

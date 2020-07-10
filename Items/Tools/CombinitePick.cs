@@ -33,7 +33,7 @@ namespace AshModAdditions.Items.Tools
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ModContent.ItemType<CombiniteBar>(), 20);
+            recipe.AddIngredient<CombiniteBar>(20);
             recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
             recipe.AddRecipe();

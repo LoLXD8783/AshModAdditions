@@ -26,7 +26,7 @@ namespace AshModAdditions.Items.Materials
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.HellstoneBar);
-            recipe.AddIngredient(ModContent.ItemType<CombiniteBar>());
+            recipe.AddIngredient<CombiniteBar>();
             recipe.AddTile(TileID.Furnaces);
             recipe.SetResult(this);
             recipe.AddRecipe();

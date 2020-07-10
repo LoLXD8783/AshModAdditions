@@ -33,7 +33,7 @@ namespace AshModAdditions.Items.Weapons.Melee
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ModContent.ItemType<RedashBar>(), 20);
+            recipe.AddIngredient<RedashBar>(20);
             recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
             recipe.AddRecipe();

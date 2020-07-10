@@ -26,8 +26,8 @@ namespace AshModAdditions.Items
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ModContent.ItemType<Scroll>());
-            recipe.AddIngredient(ModContent.ItemType<UnholyBlood>(), 10);
+            recipe.AddIngredient<Scroll>();
+            recipe.AddIngredient<UnholyBlood>(10);
             recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
             recipe.AddRecipe();
