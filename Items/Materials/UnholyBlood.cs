@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria;
+﻿using Terraria;
 using Terraria.ModLoader;
+using Microsoft.Xna.Framework;
 using AshModAdditions.Projectiles;
 
 namespace AshModAdditions.Items.Materials
@@ -23,6 +19,16 @@ namespace AshModAdditions.Items.Materials
             item.maxStack = 999;
             item.shoot = ModContent.ProjectileType<BloodFirePellet>();
             item.shootSpeed = 8;
+        }
+        public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+        {
+            Projectile p = Projectile.NewProjectileDirect(position, new Vector2(speedX, speedY), type, damage, knockBack, player.whoAmI);
+            if(p.modProjectile is BloodFirePellet)
+            {
+                p.melee = false;
+                p.ranged = true;
+            }
+            return false;
         }
     }
 }

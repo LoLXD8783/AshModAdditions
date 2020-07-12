@@ -14,6 +14,7 @@ namespace AshModAdditions.Projectiles
         public override void SetDefaults()
         {
             projectile.friendly = true; // hurting NPCs
+            projectile.magic = true;
             projectile.width = 34;
             projectile.height = 12;
         }

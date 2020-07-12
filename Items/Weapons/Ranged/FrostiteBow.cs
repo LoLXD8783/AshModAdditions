@@ -5,6 +5,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using AshModAdditions.Items.Materials;
 using Microsoft.Xna.Framework;
+using AshModAdditions.Projectiles;
 
 namespace AshModAdditions.Items.Weapons.Ranged
 {
@@ -36,6 +37,13 @@ namespace AshModAdditions.Items.Weapons.Ranged
             Item c = new Item(); // TODO REMOVE THIS 
             c.CloneDefaults(ItemID.SilverBow);
             item.UseSound = c.UseSound;
+        }
+
+        public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+        {
+            int p = Projectile.NewProjectile(position, new Vector2(speedX, speedY), type, damage, knockBack, player.whoAmI);
+            Main.projectile[p].GetGlobalProjectile<AshGlobalProjectile>().FrostiteBowShot = true;
+            return false;
         }
 
         public override Vector2? HoldoutOffset()

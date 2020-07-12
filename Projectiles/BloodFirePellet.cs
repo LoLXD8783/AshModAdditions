@@ -12,6 +12,7 @@ namespace AshModAdditions.Projectiles
             projectile.height = 30;
             // drawOffsetX = 1;
             projectile.friendly = true;
+            projectile.melee = true;
             projectile.width = 22;
             projectile.height = 6;
         }

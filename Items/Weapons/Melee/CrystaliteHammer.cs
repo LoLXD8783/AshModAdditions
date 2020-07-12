@@ -1,5 +1,4 @@
-﻿using System;
-using Terraria;
+﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using AshModAdditions.Items.Materials;
@@ -24,7 +23,8 @@ namespace AshModAdditions.Items.Weapons.Melee
             item.useTime = 30;
             item.useStyle = ItemUseStyleID.SwingThrow;
             item.crit = 19;
-            item.knockBack = 4;
+            item.knockBack = 9;
+            item.hammer = 200;
 
             item.UseSound = SoundID.Item18;
         }

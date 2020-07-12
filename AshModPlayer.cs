@@ -7,23 +7,26 @@ namespace AshModAdditions
 {
     public class AshModPlayer : ModPlayer
     {
-        public bool SandStormSpiritBuff, RedashHood, FrostiteEffect;
+        public bool RedashHood, FrostiteEffect;
+        public bool IceColdPotion, SandStormSpiritBuff;
 
         public override void ResetEffects()
         {
             SandStormSpiritBuff = false;
             RedashHood = false;
+            FrostiteEffect = false;
+            IceColdPotion = false;
         }
 
         public override void OnHitNPC(Item item, NPC target, int damage, float knockback, bool crit)
         {
-            if (FrostiteEffect)
+            if (FrostiteEffect || (IceColdPotion && (item.ranged || item.melee)))
                 target.AddBuff(BuffID.Frostburn, 120);
         }
 
         public override void OnHitNPCWithProj(Projectile proj, NPC target, int damage, float knockback, bool crit)
         {
-            if (FrostiteEffect)
+            if (FrostiteEffect || (IceColdPotion && proj.ranged || proj.melee))
                 target.AddBuff(BuffID.Frostburn, 120);
         }
 

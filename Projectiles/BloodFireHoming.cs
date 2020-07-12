@@ -20,6 +20,7 @@ namespace AshModAdditions.Projectiles
         public override void SetDefaults()
         {
             projectile.friendly = true;
+            projectile.magic = true;
             projectile.height = 32;
             projectile.width = 37;
         }
