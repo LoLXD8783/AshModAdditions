@@ -15,7 +15,7 @@ namespace AshModAdditions.Items.Armor.Crystalite
 
         public override void SetDefaults()
         {
-            item.defense = 31;
+            item.defense = 11;
             item.width = 20;
             item.height = 14;
         }

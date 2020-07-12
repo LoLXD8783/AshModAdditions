@@ -16,7 +16,7 @@ namespace AshModAdditions.Items.Armor.Redash
 
         public override void SetDefaults()
         {
-            item.defense = 33;
+            item.defense = 12;
             item.width = 28;
             item.height = 18;
         }

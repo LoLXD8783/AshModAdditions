@@ -21,6 +21,12 @@ namespace AshModAdditions.Items.Armor.Combinite
             item.height = 22;
         }
 
+        public override void DrawHair(ref bool drawHair, ref bool drawAltHair)
+        {
+            drawHair = true;
+            drawAltHair = true;
+        }
+
         public override bool IsArmorSet(Item head, Item body, Item legs) => body.type == ModContent.ItemType<CombiniteChestpiece>() && legs.type == ModContent.ItemType<CombiniteLeggings>();
 
         public override void UpdateEquip(Player player)

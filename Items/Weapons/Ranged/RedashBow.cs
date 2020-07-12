@@ -25,8 +25,10 @@ namespace AshModAdditions.Items.Weapons.Ranged
             item.useAnimation = 15;
             item.shoot = 10;
             item.shootSpeed = 8;
-            item.scale = 1.5f;
+            item.scale = 0.55f;
             item.crit = 6;
+            item.width = 58;
+            item.height = 98;
 
             item.useStyle = ItemUseStyleID.HoldingOut;
             item.useAmmo = AmmoID.Arrow;
@@ -38,13 +40,13 @@ namespace AshModAdditions.Items.Weapons.Ranged
 
         public override Vector2? HoldoutOffset()
         {
-            return new Vector2(4, 0);
+            return new Vector2(4f, 0);
         }
 
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient<CombiniteBar>(10);
+            recipe.AddIngredient<RedashBar>(15);
             recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
             recipe.AddRecipe();
