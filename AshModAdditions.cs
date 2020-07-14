@@ -1,6 +1,7 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using AshModAdditions.Config;
 using AshModAdditions.Items.MusicBoxes;
 using AshModAdditions.Tiles.MusicBoxes;
 
@@ -14,6 +15,8 @@ namespace AshModAdditions
         {
             instance = this;
             if (Main.dedServ) return; // below things that shouldn't load on servers
+            AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Spookyboiss_1"), ModContent.ItemType<KingSlimeMusicBox>(), ModContent.TileType<KingSlimeMusicBoxTile>());
+            AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Eater_Of_Worlds_Theme"), ModContent.ItemType<EaterOfWorldsMusicBox>(), ModContent.TileType<EaterOfWorldsMusicBoxTile>());
             AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Hallow_Night_-_Ashmod_Theme"), ModContent.ItemType<HallowNightMusicBox>(), ModContent.TileType<HallowNightMusicBoxTile>());
             AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Duke_Fishpog_Theme"), ModContent.ItemType<DukeFishronMusicBox>(), ModContent.TileType<DukeFishronMusicBoxTile>());
             AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Lunatic-Cultist-Theme-Burden-of"), ModContent.ItemType<LunaticCultistMusicBox>(), ModContent.TileType<LunaticCultistMusicBoxTile>());
@@ -29,43 +32,58 @@ namespace AshModAdditions
         {
             if (Main.gameMenu) return;
 
-            if(!Main.dayTime && Main.LocalPlayer.ZoneHoly)
+            var config = ModContent.GetInstance<MusicConfig>();
+
+            if(config.HallowNightMusic && !Main.dayTime && Main.LocalPlayer.ZoneHoly)
             {
                 music = GetMusicSoundSlot("Hallow_Night_-_Ashmod_Theme");
                 priority = MusicPriority.BiomeLow;
             }
 
-            if (NPC.AnyNPCs(NPCID.SkeletronHead))
+            // TODO maybe turn this into a loop and set flags on it?
+            if (config.KingSlimeTheme && NPC.AnyNPCs(NPCID.KingSlime))
+            {
+                music = GetMusicSoundSlot("Spookyboiss_1");
+                priority = MusicPriority.BossLow;
+            }
+
+            if (config.EaterOfWorldsTheme && NPC.AnyNPCs(NPCID.EaterofWorldsHead))
+            {
+                music = GetMusicSoundSlot("Eater_Of_Worlds_Theme");
+                priority = MusicPriority.BossLow;
+            }
+
+            if (config.SkeletronTheme && NPC.AnyNPCs(NPCID.SkeletronHead))
             {
                 music = GetMusicSoundSlot("Pretty_Gamer_Boss");
                 priority = MusicPriority.BossLow;
             }
 
-            if (NPC.AnyNPCs(NPCID.WallofFlesh))
+            if (config.WallOfFleshTheme && NPC.AnyNPCs(NPCID.WallofFlesh))
             {
                 music = GetMusicSoundSlot("Wall_Of_Flesh_Theme_-_Ashmod");
                 priority = MusicPriority.BossLow;
             }
 
-            if (NPC.AnyNPCs(NPCID.TheDestroyer))
+            if (config.DestroyerTheme && NPC.AnyNPCs(NPCID.TheDestroyer))
             {
                 music = GetMusicSoundSlot("Destroyer_Theme_-_");
                 priority = MusicPriority.BossLow;
             }
 
-            if (NPC.AnyNPCs(NPCID.SkeletronPrime))
+            if (config.SkeletronPrimeTheme && NPC.AnyNPCs(NPCID.SkeletronPrime))
             {
                 music = GetMusicSoundSlot("Skeletron_Prime_Is_American");
                 priority = MusicPriority.BossLow;
             }
 
-            if (NPC.AnyNPCs(NPCID.DukeFishron))
+            if (config.DukeFishronTheme && NPC.AnyNPCs(NPCID.DukeFishron))
             {
                 music = GetMusicSoundSlot("Duke_Fishpog_Theme");
                 priority = MusicPriority.BossLow;
             }
 
-            if (NPC.AnyNPCs(NPCID.CultistBoss))
+            if (config.LunaticCultistTheme && NPC.AnyNPCs(NPCID.CultistBoss))
             {
                 music = GetMusicSoundSlot("Lunatic-Cultist-Theme-Burden-of");
                 priority = MusicPriority.BossLow;

@@ -1,5 +1,4 @@
-﻿using Terraria;
-using Terraria.ID;
+﻿using Terraria.ID;
 using Terraria.ModLoader;
 using AshModAdditions.Tiles.MusicBoxes;
 
@@ -14,6 +13,8 @@ namespace AshModAdditions.Items.MusicBoxes
 
         public override void SetDefaults()
         {
+            item.width = 30;
+            item.height = 20;
             item.useTime = 10;
             item.useAnimation = 10;
             item.useStyle = ItemUseStyleID.SwingThrow;

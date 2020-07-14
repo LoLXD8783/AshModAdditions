@@ -3,6 +3,7 @@ using Terraria;
 using Terraria.GameContent.Events;
 using Terraria.ID;
 using Terraria.ModLoader;
+using AshModAdditions.Items.Equippables;
 using AshModAdditions.Items.Materials;
 
 namespace AshModAdditions.NPCs
@@ -13,6 +14,11 @@ namespace AshModAdditions.NPCs
         {
             switch (npc.type)
             {
+                case NPCID.UndeadMiner:
+                    if (Main.rand.NextBool(50)) // 2% (100 / 2 == 50 / 1)
+                        Item.NewItem(npc.getRect(), ModContent.ItemType<SafetyGlove>());
+                    break;
+
                 case NPCID.Mummy:
                 case NPCID.DarkMummy:
                 case NPCID.LightMummy:
