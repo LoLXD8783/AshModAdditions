@@ -5,6 +5,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using AshModAdditions.Items.Equippables;
 using AshModAdditions.Items.Materials;
+using AshModAdditions.Items.Weapons.Melee;
 
 namespace AshModAdditions.NPCs
 {
@@ -26,6 +27,11 @@ namespace AshModAdditions.NPCs
                         Item.NewItem(npc.getRect(), ModContent.ItemType<Scroll>());
                     break;
 
+                case NPCID.BrainofCthulhu:
+                    if (Main.rand.Next(100) <= 12) // 12%
+                        Item.NewItem(npc.getRect(), ModContent.ItemType<RoseSaber>());
+                    break;
+
                 case NPCID.BloodZombie:
                 case NPCID.Drippler:
                 case NPCID.TheGroom:
@@ -41,6 +47,16 @@ namespace AshModAdditions.NPCs
                 case NPCID.Retinazer:
                 case NPCID.Spazmatism:
                     Item.NewItem(npc.getRect(), ModContent.ItemType<UnholiteBar>(), Main.rand.Next(5, 8));
+                    break;
+            }
+        }
+
+        public override void SetupShop(int type, Chest shop, ref int nextSlot)
+        {
+            switch (type)
+            {
+                case NPCID.Cyborg:
+                    shop.item[nextSlot++].SetDefaults(ModContent.ItemType<RoseSaber>());
                     break;
             }
         }

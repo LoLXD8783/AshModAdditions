@@ -15,5 +15,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Built\wip\" />
+    <Folder Include="Backgrounds\" />
   </ItemGroup>
 </Project>
