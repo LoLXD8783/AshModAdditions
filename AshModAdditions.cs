@@ -90,7 +90,7 @@ namespace AshModAdditions
             }
         }
 
-        private int GetMusicSoundSlot(string name) => GetSoundSlot(SoundType.Music, "Sounds/Music/" + name);
+        internal int GetMusicSoundSlot(string name) => GetSoundSlot(SoundType.Music, "Sounds/Music/" + name);
 
         public override void Unload()
         {
