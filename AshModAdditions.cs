@@ -1,9 +1,14 @@
 using Terraria;
+using Terraria.Graphics.Effects;
+using Terraria.Graphics.Shaders;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using AshModAdditions.Config;
 using AshModAdditions.Items.MusicBoxes;
 using AshModAdditions.Tiles.MusicBoxes;
+using AshModAdditions.Tiles.Warped;
 
 namespace AshModAdditions
 {
@@ -15,6 +20,10 @@ namespace AshModAdditions
         {
             instance = this;
             if (Main.dedServ) return; // below things that shouldn't load on servers
+            //AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/CoolSongThatsChillAF_2"), ModContent.ItemType<KingCrabsMusicBox>(), ModContent.TileType<KingCrabsMusicBoxTile>());
+            //AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/CoolSongThatsChillAF_2"), ModContent.ItemType<GigawormMusicBox>(), ModContent.TileType<GigawormMusicBoxTile>());
+            AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/The_Ice_Theme"), ModContent.ItemType<TheIceMusicBox>(), ModContent.TileType<TheIceMusicBoxTile>());
+            AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/CoolSongThatsChillAF_2"), ModContent.ItemType<OceanNightMusicBox>(), ModContent.TileType<OceanNightMusicBoxTile>());
             AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Spookyboiss_1"), ModContent.ItemType<KingSlimeMusicBox>(), ModContent.TileType<KingSlimeMusicBoxTile>());
             AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Eater_Of_Worlds_Theme"), ModContent.ItemType<EaterOfWorldsMusicBox>(), ModContent.TileType<EaterOfWorldsMusicBoxTile>());
             AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Hallow_Night_-_Ashmod_Theme"), ModContent.ItemType<HallowNightMusicBox>(), ModContent.TileType<HallowNightMusicBoxTile>());
@@ -33,6 +42,19 @@ namespace AshModAdditions
             if (Main.gameMenu) return;
 
             var config = ModContent.GetInstance<MusicConfig>();
+
+            var modp = Main.LocalPlayer.GetModPlayer<AshModPlayer>();
+            if (modp.ZoneWarpedBiome)
+            {
+                music = GetMusicSoundSlot("warped_biom_theme");
+                priority = MusicPriority.BiomeLow;
+            }
+
+            if(config.OceanNightMusic && !Main.dayTime && Main.LocalPlayer.ZoneBeach)
+            {
+                music = GetMusicSoundSlot("CoolSongThatsChillAF_2");
+                priority = MusicPriority.BiomeLow;
+            }
 
             if(config.HallowNightMusic && !Main.dayTime && Main.LocalPlayer.ZoneHoly)
             {

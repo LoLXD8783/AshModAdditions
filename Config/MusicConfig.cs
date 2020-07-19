@@ -15,6 +15,10 @@ namespace AshModAdditions.Config
     {
         public override ConfigScope Mode => ConfigScope.ClientSide;
 
+        [Label("Change Ocean Night Music")]
+        [DefaultValue(true)]
+        public bool OceanNightMusic;
+
         [Label("Change NightTime Hallow music")]
         [DefaultValue(true)]
         public bool HallowNightMusic;

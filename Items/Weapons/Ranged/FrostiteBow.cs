@@ -21,7 +21,7 @@ namespace AshModAdditions.Items.Weapons.Ranged
             item.autoReuse = true;
             item.ranged = true;
             item.noMelee = true;
-            item.damage = 30;
+            item.damage = 20;
             item.useTime = 13;
             item.useAnimation = 13;
             item.shoot = 10;
@@ -54,7 +54,7 @@ namespace AshModAdditions.Items.Weapons.Ranged
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient<RedashBar>(15);
+            recipe.AddIngredient<FrostiteBar>(30);
             recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
             recipe.AddRecipe();

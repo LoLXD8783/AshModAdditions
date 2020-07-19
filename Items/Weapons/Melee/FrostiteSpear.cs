@@ -1,7 +1,9 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using AshModAdditions.Items.Materials;
 using AshModAdditions.Projectiles;
+using Microsoft.Xna.Framework;
 
 namespace AshModAdditions.Items.Weapons.Melee
 {
@@ -24,16 +26,26 @@ namespace AshModAdditions.Items.Weapons.Melee
             item.useAnimation = 40;
             item.width = 90;
             item.height = 90;
-            item.damage = 10;
+            item.damage = 31;
             item.knockBack = 10;
             item.useStyle = ItemUseStyleID.HoldingOut;
+        }
+
+        public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+        {
+            Projectile.NewProjectileDirect(position, new Vector2(speedX, speedY), type, damage, knockBack, player.whoAmI).damage = 16;
+            return false;
         }
 
         public override bool CanUseItem(Player player) => player.ownedProjectileCounts[item.shoot] < 1;
 
         public override void AddRecipes()
         {
-
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient<FrostiteBar>(30);
+            recipe.AddTile(TileID.Anvils);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
         }
     }
 }

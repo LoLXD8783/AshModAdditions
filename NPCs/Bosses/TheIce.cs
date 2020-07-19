@@ -3,6 +3,9 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using AshModAdditions.Items.Materials;
+using AshModAdditions.Items.Weapons.Melee;
+using AshModAdditions.Items.Weapons.Ranged;
 
 namespace AshModAdditions.NPCs.Bosses
 {
@@ -158,6 +161,12 @@ namespace AshModAdditions.NPCs.Bosses
                 orbit1.life = 0;
                 orbit1.StrikeNPC(10, 0, 1);
             }
+            Rectangle r = npc.getRect();
+            Item.NewItem(r, ModContent.ItemType<FrostiteBar>(), Main.rand.Next(15, 36));
+            if (Main.rand.NextBool(4))
+                Item.NewItem(r, ModContent.ItemType<FrostiteSpear>());
+            if (Main.rand.NextBool(4))
+                Item.NewItem(r, ModContent.ItemType<FrostiteBow>());
         }
     }
 }
