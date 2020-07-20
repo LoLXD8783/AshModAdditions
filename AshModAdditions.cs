@@ -20,8 +20,8 @@ namespace AshModAdditions
         {
             instance = this;
             if (Main.dedServ) return; // below things that shouldn't load on servers
-            //AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/CoolSongThatsChillAF_2"), ModContent.ItemType<KingCrabsMusicBox>(), ModContent.TileType<KingCrabsMusicBoxTile>());
-            //AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/CoolSongThatsChillAF_2"), ModContent.ItemType<GigawormMusicBox>(), ModContent.TileType<GigawormMusicBoxTile>());
+            AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Crown_of_the_Crustacean_King_-_Atlantis_Mod"), ModContent.ItemType<KingCrabsMusicBox>(), ModContent.TileType<KingCrabsMusicBoxTile>());
+            AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Crossout"), ModContent.ItemType<GigawormMusicBox>(), ModContent.TileType<GigawormMusicBoxTile>());
             AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/The_Ice_Theme"), ModContent.ItemType<TheIceMusicBox>(), ModContent.TileType<TheIceMusicBoxTile>());
             AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/CoolSongThatsChillAF_2"), ModContent.ItemType<OceanNightMusicBox>(), ModContent.TileType<OceanNightMusicBoxTile>());
             AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Spookyboiss_1"), ModContent.ItemType<KingSlimeMusicBox>(), ModContent.TileType<KingSlimeMusicBoxTile>());

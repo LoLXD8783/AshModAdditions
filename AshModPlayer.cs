@@ -31,7 +31,7 @@ namespace AshModAdditions
 
         public override void OnHitNPCWithProj(Projectile proj, NPC target, int damage, float knockback, bool crit)
         {
-            if (FrostiteEffect || (IceColdPotion && proj.ranged || proj.melee))
+            if (FrostiteEffect || (IceColdPotion && (proj.ranged || proj.melee)))
                 target.AddBuff(BuffID.Frostburn, 120);
         }
 

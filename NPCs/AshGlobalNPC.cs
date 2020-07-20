@@ -15,6 +15,16 @@ namespace AshModAdditions.NPCs
         {
             switch (npc.type)
             {
+                case NPCID.EaterofWorldsHead:
+                case NPCID.EaterofWorldsBody:
+                case NPCID.EaterofWorldsTail:
+                    break;
+
+                case NPCID.Hellbat:
+                    if (Main.rand.NextBool(50)) // 2%
+                        Item.NewItem(npc.getRect(), ModContent.ItemType<Firewhacker>());
+                    break;
+
                 case NPCID.UndeadMiner:
                     if (Main.rand.NextBool(50)) // 2% (100 / 2 == 50 / 1)
                         Item.NewItem(npc.getRect(), ModContent.ItemType<SafetyGlove>());
