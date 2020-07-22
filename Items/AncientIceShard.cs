@@ -1,7 +1,7 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using AshModAdditions.NPCs.Bosses;
+using AshModAdditions.NPCs.Bosses.TheIce;
 
 namespace AshModAdditions.Items
 {

@@ -6,6 +6,7 @@ using Terraria.ModLoader;
 using AshModAdditions.Items.Equippables;
 using AshModAdditions.Items.Materials;
 using AshModAdditions.Items.Weapons.Melee;
+using AshModAdditions.Items.Weapons.Ranged;
 
 namespace AshModAdditions.NPCs
 {
@@ -15,6 +16,11 @@ namespace AshModAdditions.NPCs
         {
             switch (npc.type)
             {
+                case NPCID.EyeofCthulhu:
+                    if (Main.rand.NextBool(5)) // 20%
+                        Item.NewItem(npc.getRect(), ModContent.ItemType<WindBreaker>());
+                    break;
+
                 case NPCID.EaterofWorldsHead:
                 case NPCID.EaterofWorldsBody:
                 case NPCID.EaterofWorldsTail:

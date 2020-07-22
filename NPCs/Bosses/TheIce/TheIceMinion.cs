@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace AshModAdditions.NPCs.Bosses
+namespace AshModAdditions.NPCs.Bosses.TheIce
 {
     public class TheIceMinion : ModNPC
     {
@@ -35,18 +35,18 @@ namespace AshModAdditions.NPCs.Bosses
             // ai 1 = offset
             // ai 2 = attack state (positive is towards the player, negative is returning)
             // ai 3 = distance
-            if(owner?.active != true || !(owner.modNPC is TheIce))
+            if (owner?.active != true || !(owner.modNPC is TheIce))
             {
                 npc.active = false;
             }
 
             const float returntime = 60f;
             npc.ai[0] += 0.35f;
-            if(npc.ai[2] > 0)
+            if (npc.ai[2] > 0)
             {
                 npc.ai[2]--;
                 //npc.velocity *= 0.97f; // slowdown
-                if(npc.ai[2] == 0)
+                if (npc.ai[2] == 0)
                 {
                     npc.ai[2] = -returntime;
                 }
@@ -61,11 +61,11 @@ namespace AshModAdditions.NPCs.Bosses
                 X = ownercenter.X + (float)Math.Sin(val) * npc.ai[3],
                 Y = ownercenter.Y + (float)Math.Cos(val) * npc.ai[3]
             };
-            if(npc.ai[2] < 0)
+            if (npc.ai[2] < 0)
             {
                 npc.ai[2]++;
-                float p = (1 / returntime) * Math.Abs(npc.ai[2]);
-                npc.position = Vector2.Lerp(npc.Center, targetpos, 1-p);
+                float p = 1 / returntime * Math.Abs(npc.ai[2]);
+                npc.position = Vector2.Lerp(npc.Center, targetpos, 1 - p);
                 return;
             }
             else
