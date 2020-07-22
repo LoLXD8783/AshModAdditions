@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework.Graphics;
 using AshModAdditions.Items.Materials;
 using AshModAdditions.Items.Weapons.Melee;
 using AshModAdditions.Items.Weapons.Ranged;
+using AshModAdditions.NPCs.Enemys;
 
 namespace AshModAdditions.NPCs.Bosses.TheIce
 {
@@ -41,26 +42,26 @@ namespace AshModAdditions.NPCs.Bosses.TheIce
         {
             const float distanceFromOwner = 64;
             DespawnHandler();
-            if (npc.ai[0] == 0f) // First tick, for initialization
+            if(npc.ai[0] == 0f) // First tick, for initialization
             {
                 npc.ai[0] = 0.1f;
 
                 orbit0 = Helpers.NewNPCDirect<TheIceMinion>(npc.Center, ai1: MathHelper.Pi, ai3: distanceFromOwner);
                 //orbit0.position.X += distanceFromOwner; // one from one side
-                if (orbit0.modNPC is TheIceMinion t)
+                if (orbit0.modNPC is TheIceMinion t) 
                     t.owner = npc;
                 orbit0.position = npc.position;
                 //orbit0.AI();
 
-                orbit1 = Helpers.NewNPCDirect<TheIceMinion>(npc.Center, ai3: distanceFromOwner);
+                orbit1 = Helpers.NewNPCDirect<TheIceMinion>(npc.Center, ai3:distanceFromOwner);
                 //orbit1.position.Y -= distanceFromOwner; // one from another side
-                if (orbit1.modNPC is TheIceMinion t2)
+                if (orbit1.modNPC is TheIceMinion t2) 
                     t2.owner = npc;
 
                 orbit1.position = npc.position;
                 //orbit1.AI();
             }
-            else if (npc.ai[0] == 0.1f) // wait
+            else if(npc.ai[0] == 0.1f) // wait
             {
                 if (npc.ai[1]++ > 180)
                 {
@@ -70,14 +71,14 @@ namespace AshModAdditions.NPCs.Bosses.TheIce
                 else
                     Idle();
             }
-            else if (npc.ai[0] == 0.11f) // dash
+            else if(npc.ai[0] == 0.11f) // dash
             {
                 Vector2 npccenter = npc.Center;
                 npc.velocity = Vector2.Normalize(target.Center - npccenter) * 20f;
                 npc.ai[0] = 0.115f;
                 Main.PlaySound(SoundID.ForceRoar, npccenter);
             }
-            else if (npc.ai[0] == 0.115f) // halfway dash
+            else if(npc.ai[0] == 0.115f) // halfway dash
             {
                 const float dashtime = 60f;
                 if (npc.ai[1]++ > dashtime) // 1 second duration
@@ -95,11 +96,11 @@ namespace AshModAdditions.NPCs.Bosses.TheIce
             {
                 //if (HasValidTarget(target))
                 //{
-                int p = Projectile.NewProjectile(npc.Center, Vector2.Normalize(target.Center - npc.Center) * 3, ProjectileID.IceBolt, 18, 0, Main.myPlayer);
-                Projectile proj = Main.projectile[p];
-                proj.friendly = false;
-                proj.hostile = true;
-                proj.netUpdate = true;
+                    int p = Projectile.NewProjectile(npc.Center, Vector2.Normalize(target.Center - npc.Center) * 3, ProjectileID.IceBolt, 18, 0, Main.myPlayer);
+                    Projectile proj = Main.projectile[p];
+                    proj.friendly = false;
+                    proj.hostile = true;
+                    proj.netUpdate = true;
                 //}
                 npc.netUpdate = true;
             }
@@ -126,7 +127,7 @@ namespace AshModAdditions.NPCs.Bosses.TheIce
 
         private bool TryFindTarget()
         {
-            for (int i = 0; i < Main.player.Length; i++)
+            for(int i = 0; i < Main.player.Length; i++)
             {
                 Player p = Main.player[i];
                 if (HasValidTarget(p))
@@ -140,7 +141,7 @@ namespace AshModAdditions.NPCs.Bosses.TheIce
 
         public override void FindFrame(int frameHeight)
         {
-            if (npc.frameCounter++ > 4)
+            if(npc.frameCounter++ > 4)
             {
                 npc.frameCounter = 0;
                 npc.frame.Y += frameHeight;
@@ -151,12 +152,12 @@ namespace AshModAdditions.NPCs.Bosses.TheIce
 
         public override void NPCLoot()
         {
-            if (orbit0?.active is true && orbit0.modNPC is TheIceMinion)
+            if(orbit0?.active is true && orbit0.modNPC is TheIceMinion)
             {
                 orbit0.life = 0;
                 orbit0.StrikeNPC(10, 0, 1);
             }
-            if (orbit1?.active is true && orbit1.modNPC is TheIceMinion)
+            if(orbit1?.active is true && orbit1.modNPC is TheIceMinion)
             {
                 orbit1.life = 0;
                 orbit1.StrikeNPC(10, 0, 1);

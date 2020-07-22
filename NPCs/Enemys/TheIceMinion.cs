@@ -4,7 +4,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using AshModAdditions.NPCs.Bosses;
+using AshModAdditions.NPCs.Bosses.TheIce;
 
 namespace AshModAdditions.NPCs.Enemys
 {
