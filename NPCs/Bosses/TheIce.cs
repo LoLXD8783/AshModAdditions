@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework.Graphics;
 using AshModAdditions.Items.Materials;
 using AshModAdditions.Items.Weapons.Melee;
 using AshModAdditions.Items.Weapons.Ranged;
+using AshModAdditions.NPCs.Enemys;
 
 namespace AshModAdditions.NPCs.Bosses
 {
