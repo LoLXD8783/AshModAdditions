@@ -54,7 +54,7 @@ namespace AshModAdditions.NPCs.Bosses.GigaWorm.KiloWorm
                 NPC n = Main.npc[(int)npc.ai[1]];
                 Vector2 dir = n.Center - npc.Center;
                 npc.rotation = dir.ToRotation() + MathHelper.PiOver2;
-                float length = dir.Length(); 
+                float length = dir.Length();
                 float dist = (length - npc.width) / length;
                 float posX = dir.X * dist;
                 float posY = dir.Y * dist;

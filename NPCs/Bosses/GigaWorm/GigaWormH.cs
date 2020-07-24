@@ -22,6 +22,7 @@ namespace AshModAdditions.NPCs.Bosses.GigaWorm
         public bool displayDeathMessage = false;
         public int reducedCooldown = 0;
         public int chargeDuration = 0;
+        public int flyVelocity = 0;
         public float gigaWormSpeed;
         public float gigaWormAcceleration;
         public override void SetStaticDefaults()
@@ -32,7 +33,7 @@ namespace AshModAdditions.NPCs.Bosses.GigaWorm
         public override void SetDefaults()
         {
             npc.lifeMax = 150000;
-            npc.damage = 80;
+            npc.damage = 160;
             npc.defense = 25;
             npc.knockBackResist = 0f;
             npc.width = 130;
@@ -73,7 +74,6 @@ namespace AshModAdditions.NPCs.Bosses.GigaWorm
         /*
          * This hook is irrelevant due to the requirement of a custom death message. Put all loot code into the CheckDead Hook.
         {
-
         }*/
 
 
@@ -211,14 +211,14 @@ namespace AshModAdditions.NPCs.Bosses.GigaWorm
                     npc.life = 0;
                     npc.checkDead();
                 }
-                if (isEnraged)
+                if (isEnraged && !displayDeathMessage == true)
                 {
                     //Enrage buffs
                     gigaWormSpeed = 25f;
                     gigaWormAcceleration = 0.45f;
                     reducedCooldown = 150;
                 }
-                if (Timer > 600 - reducedCooldown)
+                if (Timer > 600 - reducedCooldown && !displayDeathMessage == true)
                 {
                     //Charging
                     int randomBool = randGen.Next(0, 2);
@@ -236,23 +236,31 @@ namespace AshModAdditions.NPCs.Bosses.GigaWorm
                     Timer = 2;
                 }
 
-                    if (Main.rand.Next(1299) == 0 && !isEnraged)
+                if (Main.rand.Next(1299) == 0 && !isEnraged)
+                {
+                    if (hasCharged == false && !displayDeathMessage == true)
                     {
-                        if (hasCharged == false)
-                        {
-                            chargeDuration++;
-                            gigaWormSpeed += 25f;
-                            gigaWormAcceleration += 0.45f;
-                            Main.PlaySound(SoundID.NPCDeath10);
-                            hasCharged = true;
-                        }
+                        chargeDuration++;
+                        gigaWormSpeed += 25f;
+                        gigaWormAcceleration += 0.45f;
+                        Main.PlaySound(SoundID.NPCDeath10);
+                        hasCharged = true;
+                    }
                 }
-                if (hasCharged)
+                if (hasCharged && !displayDeathMessage == true)
                 {
                     chargeDuration++;
+
+                    Color color = new Color();
+                    Rectangle rectangle = new Rectangle((int)npc.position.X, (int)(npc.position.Y + ((npc.height - npc.width) / 2)), npc.width, npc.width);
+                    int count = 5;
+                    for (int i = 1; i <= count; i++)
+                    {
+                        Dust.NewDust(npc.position, rectangle.Width, rectangle.Height, 6, 0, 0, 100, color, 0.8f);
+                    }
                 }
 
-                if (chargeDuration > 600)
+                if (chargeDuration > 600 && !displayDeathMessage == true)
                 {
                     gigaWormSpeed -= 30f;
                     gigaWormAcceleration -= 0.5f;
@@ -261,7 +269,7 @@ namespace AshModAdditions.NPCs.Bosses.GigaWorm
                 }
                 if (isFiring)
                 {
-                    if (Timer < 900 + reducedCooldown)
+                    if (Timer < 900 + reducedCooldown && !displayDeathMessage == true)
                     {
                         //Laser Stream
                         if (Timer < 180)
@@ -278,7 +286,7 @@ namespace AshModAdditions.NPCs.Bosses.GigaWorm
                 }
                 if (isVomiting)
                 {
-                    if (Timer < 900 - reducedCooldown)
+                    if (Timer < 900 - reducedCooldown && !displayDeathMessage == true)
                     {
                         //Minion summon
                         if (Timer == 50)
@@ -295,6 +303,13 @@ namespace AshModAdditions.NPCs.Bosses.GigaWorm
                             }
                         }
                     }
+                }
+                if (displayDeathMessage == true)
+                {
+                    flyVelocity += 40;
+                    npc.damage = 0;
+                    npc.position.X = Main.player[npc.target].position.X + flyVelocity;
+                    npc.position.Y = Main.player[npc.target].position.Y + 200;
                 }
             }
             //speed an acceleration float is dependant on these two custom floats.
@@ -461,20 +476,16 @@ namespace AshModAdditions.NPCs.Bosses.GigaWorm
             Timer++;
             if (Timer > 0)
             {
-                npc.life = 0;
                 if (!displayDeathMessage)
                 {
+                    npc.life = npc.lifeMax;
                     //Custom Death Message
-                    Main.NewText("[c/350F60:A Gigaworm has been vanquished!]");
                     //To not display more than once.
                     displayDeathMessage = true;
                     //Below this comment, put all of the loot code here (it doesn't matter what kind, it will still work the same way.
                     //Death Sound
-                    Main.PlaySound(SoundID.NPCDeath10);
-                    //Drops
-                    //Item.NewItem(npc.getRect(), mod.ItemType("ModItem"));
-                    //Gores
-                    //Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/CustomGore"), 1f);
+                    //npc.position.Y = Main.player[npc.target].position.Y + flyVelocity;
+                    Main.NewText("[c/4b1267:The Gigaworm soars to the right, leaving objects behind...]");
                 }
             }
             return false;

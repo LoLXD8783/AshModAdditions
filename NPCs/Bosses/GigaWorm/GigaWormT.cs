@@ -85,7 +85,6 @@ namespace AshModAdditions.NPCs.Bosses.GigaWorm
             Main.spriteBatch.Draw(texture, npc.Center - Main.screenPosition, new Rectangle?(), drawColor, npc.rotation, origin, npc.scale, SpriteEffects.None, 0);
             return false;
         }
-
         public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
         {
             return false;

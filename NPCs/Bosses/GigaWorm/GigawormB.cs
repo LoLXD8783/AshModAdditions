@@ -28,6 +28,7 @@ namespace AshModAdditions.NPCs.Bosses.GigaWorm
             npc.noGravity = true;
             npc.dontCountMe = true;
             npc.HitSound = SoundID.NPCHit7;
+
         }
 
         public override bool PreAI()
