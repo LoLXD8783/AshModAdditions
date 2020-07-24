@@ -19,6 +19,9 @@ namespace AshModAdditions.Items.Weapons.Magic
             item.width = 28;
             item.height = 32;
             item.damage = 29;
+            item.useTime = 20;
+            item.useAnimation = 20;
+            item.useStyle = ItemUseStyleID.HoldingOut;
             item.shoot = ModContent.ProjectileType<FrostiteSeekerProjectile>();
             item.shootSpeed = 10;
         }

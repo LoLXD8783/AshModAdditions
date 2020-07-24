@@ -10,6 +10,33 @@ namespace AshModAdditions
     {
         internal const string PLACEHOLDER = nameof(AshModAdditions) + "/placeholder";
 
+        /// <summary>
+        /// Finds the closest npc to the specified position
+        /// </summary>
+        /// <param name="position"></param>
+        /// <returns>The NPC index + 1, if no NPC is found, 0 is returned</returns>
+        public static int ClosestHostileNPCTo(Vector2 position, float minDistance = -1)
+        {
+            int npcs = Main.npc.Length - 1;
+            float closestDistance = -1;
+            int npct = 0;
+            for(int i = 0; i < npcs; i++)
+            {
+                NPC npc = Main.npc[i];
+
+                float distSQ = npc.DistanceSQ(position);
+                if (! (npc?.active is true && npc.CanBeChasedBy() && (minDistance == -1 || npc.WithinRange(position, minDistance)) ))
+                    continue;
+
+                if(closestDistance == -1 || distSQ < closestDistance)
+                {
+                    closestDistance = distSQ;
+                    npct = npc.whoAmI + 1;
+                }
+            }
+            return npct;
+        }
+
         public static int NewNPC<T>(int X, int Y, int Type, int Start = 0, float ai0 = 0, float ai1 = 0, float ai2 = 0, float ai3 = 0, int Target = 255) where T : ModNPC => NPC.NewNPC(X, Y, ModContent.NPCType<T>(), Start, ai0, ai1, ai2, ai3, Target);
         public static int NewNPC<T>(out T modnpc, int X, int Y, int Type, int Start = 0, float ai0 = 0, float ai1 = 0, float ai2 = 0, float ai3 = 0, int Target = 255) where T : ModNPC
         {

@@ -17,6 +17,7 @@ namespace AshModAdditions.Projectiles
             projectile.magic = true;
             projectile.width = 34;
             projectile.height = 12;
+            projectile.timeLeft = 240;
         }
 
         public override void AI()

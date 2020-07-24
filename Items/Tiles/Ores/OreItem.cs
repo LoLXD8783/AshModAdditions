@@ -22,7 +22,7 @@ namespace AshModAdditions.Items.Tiles.Ores
             item.consumable = true;
             item.maxStack = 999;
             item.useTime = 10;
-            item.useAnimation = 10;
+            item.useAnimation = 15;
             item.useStyle = ItemUseStyleID.SwingThrow;
             item.createTile = TileType;
         }

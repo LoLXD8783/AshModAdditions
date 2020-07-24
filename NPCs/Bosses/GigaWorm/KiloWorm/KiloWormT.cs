@@ -6,7 +6,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 
 
-namespace AshModAdditions.NPCs.Bosses.Gigaworm.KiloWorm
+namespace AshModAdditions.NPCs.Bosses.GigaWorm.KiloWorm
 {
     public class KiloWormT : ModNPC
     {

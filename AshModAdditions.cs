@@ -1,3 +1,6 @@
+using System;
+using System.Reflection;
+using System.Linq;
 using Terraria;
 using Terraria.Graphics.Effects;
 using Terraria.Graphics.Shaders;
@@ -12,8 +15,8 @@ using AshModAdditions.Tiles.Warped;
 
 namespace AshModAdditions
 {
-	public class AshModAdditions : Mod
-	{
+    public class AshModAdditions : Mod
+    {
         internal static AshModAdditions instance; // this field is in case we need to access the mod instance for something, as example, UI or calling a mod instance functions, such as GetPacket
 
         public override void Load()
@@ -50,13 +53,13 @@ namespace AshModAdditions
                 priority = MusicPriority.BiomeLow;
             }
 
-            if(config.OceanNightMusic && !Main.dayTime && Main.LocalPlayer.ZoneBeach)
+            if (config.OceanNightMusic && !Main.dayTime && Main.LocalPlayer.ZoneBeach)
             {
                 music = GetMusicSoundSlot("CoolSongThatsChillAF_2");
                 priority = MusicPriority.BiomeLow;
             }
 
-            if(config.HallowNightMusic && !Main.dayTime && Main.LocalPlayer.ZoneHoly)
+            if (config.HallowNightMusic && !Main.dayTime && Main.LocalPlayer.ZoneHoly)
             {
                 music = GetMusicSoundSlot("Hallow_Night_-_Ashmod_Theme");
                 priority = MusicPriority.BiomeLow;
@@ -116,7 +119,37 @@ namespace AshModAdditions
 
         public override void Unload()
         {
+            UnloadFields(Code ?? GetType().Assembly);
             instance = null;
+        }
+
+        private static void UnloadFields(Assembly assembly)
+        {
+            foreach (var type in GetTypesSafe(assembly))
+                foreach (var field in type.GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static))
+                {
+                    if (field.IsInitOnly || field.IsLiteral)
+                        continue;
+
+                    Type fieldtype = field.FieldType;
+
+                    if (fieldtype.IsValueType && Nullable.GetUnderlyingType(fieldtype) == null)
+                        continue;
+
+                    field.SetValue(null, null);
+                }
+        }
+
+        private static Type[] GetTypesSafe(Assembly assembly)
+        {
+            try
+            {
+                return assembly.GetTypes();
+            }
+            catch (ReflectionTypeLoadException e)
+            {
+                return e.Types;
+            }
         }
     }
 }

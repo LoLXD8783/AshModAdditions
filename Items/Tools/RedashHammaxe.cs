@@ -26,8 +26,9 @@ namespace AshModAdditions.Items.Tools
             item.hammer = 200;
             item.useTime = 20;
             item.useAnimation = 20;
+            item.knockBack = 4f;
             item.useStyle = ItemUseStyleID.SwingThrow;
-            item.UseSound = SoundID.Item18;
+            item.UseSound = SoundHelper.ItemSwing;
         }
 
         public override void AddRecipes()

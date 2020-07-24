@@ -22,6 +22,7 @@ namespace AshModAdditions.Tiles.Ores
             TileID.Sets.Ore[Type] = true;
             Main.tileSpelunker[Type] = true;
             Main.tileSolid[Type] = true;
+            Main.tileShine2[Type] = true;
 
             ModTranslation name = CreateMapEntryName();
             name.SetDefault(TileName);

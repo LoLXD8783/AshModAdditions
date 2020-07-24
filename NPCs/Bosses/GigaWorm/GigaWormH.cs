@@ -1,4 +1,7 @@
-﻿using Microsoft.Xna.Framework;
+﻿using AshModAdditions.Items.Weapons.Melee;
+using AshModAdditions.Items.Weapons.Ranged;
+using AshModAdditions.NPCs.Bosses.GigaWorm.KiloWorm;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using Terraria;
@@ -48,6 +51,7 @@ namespace AshModAdditions.NPCs.Bosses.GigaWorm
             //Currently it's only immune to Confused. If you want it to be immune to more debuffs, please put them here.
             npc.buffImmune[BuffID.Confused] = true;
             music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Crossout");
+            musicPriority = MusicPriority.BossLow;
         }
         //When you are adding loot to this boss, please put it in the CheckDead hook, because a custom death message is used for this boss.
         //Issues:
@@ -85,14 +89,14 @@ namespace AshModAdditions.NPCs.Bosses.GigaWorm
                     for (int i = 0; i < randomWormLength; ++i)
                     {
                         //Spawns 80 of these
-                        latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("GigaWormB"), npc.whoAmI, 0, latestNPC);
-                        Main.npc[(int)latestNPC].realLife = npc.whoAmI;
-                        Main.npc[(int)latestNPC].ai[3] = npc.whoAmI;
+                        latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, ModContent.NPCType<GigaWormB>(), npc.whoAmI, 0, latestNPC);
+                        Main.npc[latestNPC].realLife = npc.whoAmI;
+                        Main.npc[latestNPC].ai[3] = npc.whoAmI;
                     }
                     //Spawns the tail
-                    latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("GigaWormT"), npc.whoAmI, 0, latestNPC);
-                    Main.npc[(int)latestNPC].realLife = npc.whoAmI;
-                    Main.npc[(int)latestNPC].ai[3] = npc.whoAmI;
+                    latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, ModContent.NPCType<GigaWormT>(), npc.whoAmI, 0, latestNPC);
+                    Main.npc[latestNPC].realLife = npc.whoAmI;
+                    Main.npc[latestNPC].ai[3] = npc.whoAmI;
 
                     npc.ai[0] = 1;
                     npc.netUpdate = true;
@@ -117,15 +121,16 @@ namespace AshModAdditions.NPCs.Bosses.GigaWorm
             {
                 for (int j = minTilePosY; j < maxTilePosY; ++j)
                 {
-                    if (Main.tile[i, j] != null && (Main.tile[i, j].nactive() && (Main.tileSolid[(int)Main.tile[i, j].type] || Main.tileSolidTop[(int)Main.tile[i, j].type] && (int)Main.tile[i, j].frameY == 0) || (int)Main.tile[i, j].liquid > 64))
+                    Tile tile = Main.tile[i, j];
+                    if (tile != null && (tile.nactive() && (Main.tileSolid[tile.type] || Main.tileSolidTop[tile.type] && tile.frameY == 0) || tile.liquid > 64))
                     {
                         Vector2 vector2;
-                        vector2.X = (float)(i * 16);
-                        vector2.Y = (float)(j * 16);
+                        vector2.X = i * 16;
+                        vector2.Y = j * 16;
                         if (npc.position.X + npc.width > vector2.X && npc.position.X < vector2.X + 16.0 && (npc.position.Y + npc.height > (double)vector2.Y && npc.position.Y < vector2.Y + 16.0))
                         {
                             collision = true;
-                            if (Main.rand.Next(100) == 0 && Main.tile[i, j].nactive())
+                            if (Main.rand.Next(100) == 0 && tile.nactive())
                                 WorldGen.KillTile(i, j, true, true, false);
                         }
                     }
@@ -138,9 +143,10 @@ namespace AshModAdditions.NPCs.Bosses.GigaWorm
                 bool playerCollision = true;
                 for (int index = 0; index < 255; ++index)
                 {
-                    if (Main.player[index].active)
+                    Player p = Main.player[index];
+                    if (p.active)
                     {
-                        Rectangle rectangle2 = new Rectangle((int)Main.player[index].position.X - maxDistance, (int)Main.player[index].position.Y - maxDistance, maxDistance * 2, maxDistance * 2);
+                        Rectangle rectangle2 = new Rectangle((int)p.position.X - maxDistance, (int)p.position.Y - maxDistance, maxDistance * 2, maxDistance * 2);
                         if (rectangle1.Intersects(rectangle2))
                         {
                             playerCollision = false;
@@ -155,7 +161,7 @@ namespace AshModAdditions.NPCs.Bosses.GigaWorm
 
             npc.ai[0]++;
             Player P = Main.player[npc.target];
-            if (npc.target < 0 || npc.target == 255 || Main.player[npc.target].dead || !Main.player[npc.target].active)
+            if (npc.target < 0 || npc.target == 255 || P.dead || !P.active)
             {
                 npc.TargetClosest(false);
                 P = Main.player[npc.target];
@@ -166,7 +172,7 @@ namespace AshModAdditions.NPCs.Bosses.GigaWorm
             }
             npc.netUpdate = true;
             {
-                if (initialize == false)
+                if (!initialize)
                 {
                     gigaWormSpeed += 15f;
                     gigaWormAcceleration += 0.25f;
@@ -178,7 +184,7 @@ namespace AshModAdditions.NPCs.Bosses.GigaWorm
                 if (npc.life < npc.lifeMax * 0.50)
                 {
                     Timer++;
-                    if (Timer > 0 && isAggrivated == false)
+                    if (Timer > 0 && !isAggrivated)
                     {
                         //Phase 2
                         gigaWormSpeed += 10f;
@@ -191,7 +197,7 @@ namespace AshModAdditions.NPCs.Bosses.GigaWorm
                 if (npc.life < npc.lifeMax * 0.17)
                 {
                     Timer++;
-                    if (Timer > 0 && isEnraged == false)
+                    if (Timer > 0 && !isEnraged)
                     {
                         //Phase 3
                         isEnraged = true;
@@ -205,7 +211,7 @@ namespace AshModAdditions.NPCs.Bosses.GigaWorm
                     npc.life = 0;
                     npc.checkDead();
                 }
-                if (isEnraged == true)
+                if (isEnraged)
                 {
                     //Enrage buffs
                     gigaWormSpeed = 25f;
@@ -230,7 +236,7 @@ namespace AshModAdditions.NPCs.Bosses.GigaWorm
                     Timer = 2;
                 }
 
-                    if (Main.rand.Next(1299) == 0 && isEnraged == false)
+                    if (Main.rand.Next(1299) == 0 && !isEnraged)
                     {
                         if (hasCharged == false)
                         {
@@ -241,7 +247,7 @@ namespace AshModAdditions.NPCs.Bosses.GigaWorm
                             hasCharged = true;
                         }
                 }
-                if (hasCharged == true)
+                if (hasCharged)
                 {
                     chargeDuration++;
                 }
@@ -253,7 +259,7 @@ namespace AshModAdditions.NPCs.Bosses.GigaWorm
                     chargeDuration = 0;
                     hasCharged = false;
                 }
-                if (this.isFiring == true)
+                if (isFiring)
                 {
                     if (Timer < 900 + reducedCooldown)
                     {
@@ -261,7 +267,7 @@ namespace AshModAdditions.NPCs.Bosses.GigaWorm
                         if (Timer < 180)
                         {
                             float Speed = 18f;
-                            Vector2 vector8 = new Vector2(npc.position.X + npc.width, npc.position.Y + npc.height);
+                            Vector2 vector8 = npc.BottomRight;
                             int damage = 60;
                             int type = 83;
                             float rotation = npc.rotation + 90;
@@ -270,7 +276,7 @@ namespace AshModAdditions.NPCs.Bosses.GigaWorm
                         }
                     }
                 }
-                if (this.isVomiting == true)
+                if (isVomiting)
                 {
                     if (Timer < 900 - reducedCooldown)
                     {
@@ -278,14 +284,14 @@ namespace AshModAdditions.NPCs.Bosses.GigaWorm
                         if (Timer == 50)
                         {
                             Main.PlaySound(SoundID.NPCDeath13);
-                            NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, mod.NPCType("KiloWormH"));
+                            NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, ModContent.NPCType<KiloWormH>());
 
                             Color color = new Color();
                             Rectangle rectangle = new Rectangle((int)npc.position.X, (int)(npc.position.Y + ((npc.height - npc.width) / 2)), npc.width, npc.width);
                             int count = 15;
                             for (int i = 1; i <= count; i++)
                             {
-                                int dust = Dust.NewDust(npc.position, rectangle.Width, rectangle.Height, 40, 0, 0, 100, color, 1.5f);
+                                Dust.NewDust(npc.position, rectangle.Width, rectangle.Height, 40, 0, 0, 100, color, 1.5f);
                             }
                         }
                     }
@@ -295,9 +301,10 @@ namespace AshModAdditions.NPCs.Bosses.GigaWorm
             float speed = gigaWormSpeed;
             float acceleration = gigaWormAcceleration;
 
-            Vector2 npcCenter = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
-            float targetXPos = Main.player[npc.target].position.X + (Main.player[npc.target].width / 2);
-            float targetYPos = Main.player[npc.target].position.Y + (Main.player[npc.target].height / 2);
+            Vector2 npcCenter = npc.Center;
+            Vector2 targetCenter = Main.player[npc.target].MountedCenter;
+            float targetXPos = targetCenter.X; //Main.player[npc.target].position.X + (Main.player[npc.target].width / 2);
+            float targetYPos = targetCenter.Y; //Main.player[npc.target].position.Y + (Main.player[npc.target].height / 2);
 
             float targetRoundedPosX = (float)((int)(targetXPos / 16.0) * 16);
             float targetRoundedPosY = (float)((int)(targetYPos / 16.0) * 16);
@@ -350,64 +357,64 @@ namespace AshModAdditions.NPCs.Bosses.GigaWorm
                 float absDirX = Math.Abs(dirX);
                 float absDirY = Math.Abs(dirY);
                 float newSpeed = speed / length;
-                dirX = dirX * newSpeed;
-                dirY = dirY * newSpeed;
+                dirX *= newSpeed;
+                dirY *= newSpeed;
                 if (npc.velocity.X > 0.0 && dirX > 0.0 || npc.velocity.X < 0.0 && dirX < 0.0 || (npc.velocity.Y > 0.0 && dirY > 0.0 || npc.velocity.Y < 0.0 && dirY < 0.0))
                 {
                     if (npc.velocity.X < dirX)
-                        npc.velocity.X = npc.velocity.X + acceleration;
+                        npc.velocity.X += acceleration;
                     else if (npc.velocity.X > dirX)
-                        npc.velocity.X = npc.velocity.X - acceleration;
+                        npc.velocity.X -= acceleration;
                     if (npc.velocity.Y < dirY)
-                        npc.velocity.Y = npc.velocity.Y + acceleration;
+                        npc.velocity.Y += acceleration;
                     else if (npc.velocity.Y > dirY)
-                        npc.velocity.Y = npc.velocity.Y - acceleration;
+                        npc.velocity.Y -= acceleration;
                     if (Math.Abs(dirY) < speed * 0.2 && (npc.velocity.X > 0.0 && dirX < 0.0 || npc.velocity.X < 0.0 && dirX > 0.0))
                     {
                         if (npc.velocity.Y > 0.0)
-                            npc.velocity.Y = npc.velocity.Y + acceleration * 2f;
+                            npc.velocity.Y += acceleration * 2f;
                         else
-                            npc.velocity.Y = npc.velocity.Y - acceleration * 2f;
+                            npc.velocity.Y -= acceleration * 2f;
                     }
                     if (Math.Abs(dirX) < speed * 0.2 && (npc.velocity.Y > 0.0 && dirY < 0.0 || npc.velocity.Y < 0.0 && dirY > 0.0))
                     {
                         if (npc.velocity.X > 0.0)
-                            npc.velocity.X = npc.velocity.X + acceleration * 2f;
+                            npc.velocity.X += acceleration * 2f;
                         else
-                            npc.velocity.X = npc.velocity.X - acceleration * 2f;
+                            npc.velocity.X -= acceleration * 2f;
                     }
                 }
                 else if (absDirX > absDirY)
                 {
                     if (npc.velocity.X < dirX)
-                        npc.velocity.X = npc.velocity.X + acceleration * 1.1f;
+                        npc.velocity.X += acceleration * 1.1f;
                     else if (npc.velocity.X > dirX)
-                        npc.velocity.X = npc.velocity.X - acceleration * 1.1f;
+                        npc.velocity.X -= acceleration * 1.1f;
                     if (Math.Abs(npc.velocity.X) + Math.Abs(npc.velocity.Y) < speed * 0.5)
                     {
                         if (npc.velocity.Y > 0.0)
-                            npc.velocity.Y = npc.velocity.Y + acceleration;
+                            npc.velocity.Y += acceleration;
                         else
-                            npc.velocity.Y = npc.velocity.Y - acceleration;
+                            npc.velocity.Y -= acceleration;
                     }
                 }
                 else
                 {
                     if (npc.velocity.Y < dirY)
-                        npc.velocity.Y = npc.velocity.Y + acceleration * 1.1f;
+                        npc.velocity.Y += acceleration * 1.1f;
                     else if (npc.velocity.Y > dirY)
-                        npc.velocity.Y = npc.velocity.Y - acceleration * 1.1f;
+                        npc.velocity.Y -= acceleration * 1.1f;
                     if (Math.Abs(npc.velocity.X) + Math.Abs(npc.velocity.Y) < speed * 0.5)
                     {
                         if (npc.velocity.X > 0.0)
-                            npc.velocity.X = npc.velocity.X + acceleration;
+                            npc.velocity.X += acceleration;
                         else
-                            npc.velocity.X = npc.velocity.X - acceleration;
+                            npc.velocity.X -= acceleration;
                     }
                 }
             }
             // Set the correct rotation for this NPC.
-            npc.rotation = (float)Math.Atan2(npc.velocity.Y, npc.velocity.X) + 1.57f;
+            npc.rotation = npc.velocity.ToRotation() + MathHelper.PiOver2;
 
             // Some netupdate stuff (multiplayer compatibility).
             if (collision)
@@ -433,18 +440,20 @@ namespace AshModAdditions.NPCs.Bosses.GigaWorm
             rotation = npc.rotation;
         }
 
-        public override bool PreDraw(Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch, Color drawColor)
+        public override bool PreDraw(SpriteBatch spriteBatch, Color drawColor)
         {
             Texture2D texture = Main.npcTexture[npc.type];
             Vector2 origin = new Vector2(texture.Width * 0.5f, texture.Height * 0.5f);
             Main.spriteBatch.Draw(texture, npc.Center - Main.screenPosition, new Rectangle?(), drawColor, npc.rotation, origin, npc.scale, SpriteEffects.None, 0);
             return false;
         }
+
         public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
         {
             scale = 1.9f;
             return null;
         }
+
         public override bool CheckDead()
         {
             //check dead
@@ -453,7 +462,7 @@ namespace AshModAdditions.NPCs.Bosses.GigaWorm
             if (Timer > 0)
             {
                 npc.life = 0;
-                if (displayDeathMessage == false)
+                if (!displayDeathMessage)
                 {
                     //Custom Death Message
                     Main.NewText("[c/350F60:A Gigaworm has been vanquished!]");
@@ -463,12 +472,33 @@ namespace AshModAdditions.NPCs.Bosses.GigaWorm
                     //Death Sound
                     Main.PlaySound(SoundID.NPCDeath10);
                     //Drops
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ModItem"));
+                    //Item.NewItem(npc.getRect(), mod.ItemType("ModItem"));
                     //Gores
-                    Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/CustomGore"), 1f);
+                    //Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/CustomGore"), 1f);
                 }
             }
             return false;
         }
+
+        public override void BossLoot(ref string name, ref int potionType)
+        {
+            int item = 0;
+            switch (Main.rand.Next(3))
+            {
+                case 0: item = ModContent.ItemType<GigatonsOfTheets>(); break;
+                case 1: item = ModContent.ItemType<WormGun>(); break;
+                case 2: item = ModContent.ItemType<GigaStar>(); break;
+            }
+            potionType = ItemID.GreaterHealingPotion;
+            DropItem(item);
+            DropItem(item, 30, 70);
+        }
+
+        public override void NPCLoot()
+        {
+        }
+
+        private void DropItem(int type, int stackmin, int stackmax) => Item.NewItem(npc.getRect(), type, Main.rand.Next(stackmin, stackmax + 1));
+        private void DropItem(int type, int stack = 1) => Item.NewItem(npc.getRect(), type, stack);
     }
 }

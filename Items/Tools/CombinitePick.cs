@@ -21,11 +21,12 @@ namespace AshModAdditions.Items.Tools
             item.pick = 130;
             item.width = 32;
             item.height = 32;
+            item.knockBack = 3f;
             item.autoReuse = true;
             item.useTurn = true;
 
             item.useStyle = ItemUseStyleID.SwingThrow;
-            item.UseSound = SoundID.Item1;
+            item.UseSound = SoundHelper.ItemSwing;
 
             item.value = Item.sellPrice(gold: 16);
         }

@@ -20,7 +20,9 @@ namespace AshModAdditions.Items.Weapons.Melee
             item.height = 50;
             item.useTime = 20;
             item.useAnimation = 20;
+            item.knockBack = 4f;
             item.useStyle = ItemUseStyleID.SwingThrow;
+            item.UseSound = SoundHelper.ItemSwing;
         }
 
         public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)

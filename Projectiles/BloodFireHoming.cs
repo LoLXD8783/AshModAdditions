@@ -23,6 +23,7 @@ namespace AshModAdditions.Projectiles
             projectile.magic = true;
             projectile.height = 32;
             projectile.width = 37;
+            projectile.timeLeft = 240;
         }
 
         public override void AI()
@@ -40,7 +41,7 @@ namespace AshModAdditions.Projectiles
             projectile.velocity = Vector2.SmoothStep(projectile.velocity, Vector2.Normalize(distance) * 12, 0.2f);
         }
 
-        private bool IsValidTarget(NPC npc) => npc != null && npc.active && !npc.friendly && npc.CanBeChasedBy(); // CanBeChasedBy contains some things for what it says
+        private bool IsValidTarget(NPC npc) => npc != null && npc.active && !npc.friendly && npc.CanBeChasedBy() && npc.WithinRange(projectile.Center, 16 * 20); // CanBeChasedBy contains some things for what it says
 
         private bool TryFindTarget()
         {
