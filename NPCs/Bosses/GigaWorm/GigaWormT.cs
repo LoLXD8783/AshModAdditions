@@ -17,7 +17,7 @@ namespace AshModAdditions.NPCs.Bosses.GigaWorm
         {
             npc.width = 130;
             npc.height = 228;
-            npc.damage = 0;
+            npc.damage = 60;
             npc.defense = 25;
             npc.lifeMax = 1;
             npc.knockBackResist = 0.0f;
@@ -33,7 +33,7 @@ namespace AshModAdditions.NPCs.Bosses.GigaWorm
         {
             npc.ai[0]++;
             Player P = Main.player[npc.target];
-            if (npc.target < 0 || npc.target == 255 || Main.player[npc.target].dead || !Main.player[npc.target].active)
+            if (npc.target < 0 || npc.target == 255 || P.dead || !P.active)
             {
                 npc.TargetClosest(false);
                 P = Main.player[npc.target];
@@ -63,32 +63,31 @@ namespace AshModAdditions.NPCs.Bosses.GigaWorm
 
             if (npc.ai[1] < (double)Main.npc.Length)
             {
-                Vector2 npcCenter = new Vector2(npc.position.X + (float)npc.width * 0.5f, npc.position.Y + (float)npc.height * 0.5f);
-                float dirX = Main.npc[(int)npc.ai[1]].position.X + (float)(Main.npc[(int)npc.ai[1]].width / 2) - npcCenter.X;
-                float dirY = Main.npc[(int)npc.ai[1]].position.Y + (float)(Main.npc[(int)npc.ai[1]].height / 2) - npcCenter.Y;
-                npc.rotation = (float)Math.Atan2(dirY, dirX) + 1.57f;
-                float length = (float)Math.Sqrt(dirX * dirX + dirY * dirY);
-                float dist = (length - (float)npc.width) / length;
-                float posX = dirX * dist;
-                float posY = dirY * dist;
+                NPC n = Main.npc[(int)npc.ai[1]];
+                Vector2 dir = n.Center - npc.Center;
+                npc.rotation = dir.ToRotation() + MathHelper.PiOver2;
+                float length = dir.Length(); 
+                float dist = (length - npc.width) / length;
+                float posX = dir.X * dist;
+                float posY = dir.Y * dist;
 
                 npc.velocity = Vector2.Zero;
-                npc.position.X = npc.position.X + posX;
-                npc.position.Y = npc.position.Y + posY;
+                npc.position.X += posX;
+                npc.position.Y += posY;
             }
             return false;
         }
 
-        public override bool PreDraw(Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch, Color drawColor)
+        public override bool PreDraw(SpriteBatch spriteBatch, Color drawColor)
         {
             Texture2D texture = Main.npcTexture[npc.type];
             Vector2 origin = new Vector2(texture.Width * 0.5f, texture.Height * 0.5f);
             Main.spriteBatch.Draw(texture, npc.Center - Main.screenPosition, new Rectangle?(), drawColor, npc.rotation, origin, npc.scale, SpriteEffects.None, 0);
             return false;
         }
+
         public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
         {
-
             return false;
         }
     }
