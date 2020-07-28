@@ -23,7 +23,7 @@ namespace AshModAdditions.Items.Equippables
         //these wings use the same values as the solar wings
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            player.wingTimeMax = 140; // might be 140 tiles
+            player.wingTimeMax = 90;
         }
 
         public override void VerticalWingSpeeds(Player player, ref float ascentWhenFalling, ref float ascentWhenRising,

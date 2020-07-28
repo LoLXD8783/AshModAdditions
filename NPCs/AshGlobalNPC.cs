@@ -10,8 +10,15 @@ using AshModAdditions.Items.Weapons.Ranged;
 
 namespace AshModAdditions.NPCs
 {
-    public class AshGlobalNPC : GlobalNPC
+    public partial class AshGlobalNPC : GlobalNPC
     {
+        public override bool InstancePerEntity => true;
+
+        public override void ResetEffects(NPC npc)
+        {
+            ResetDebuffs();
+        }
+
         public override void NPCLoot(NPC npc)
         {
             switch (npc.type)
@@ -46,6 +53,10 @@ namespace AshModAdditions.NPCs
                 case NPCID.BrainofCthulhu:
                     if (Main.rand.Next(100) <= 12) // 12%
                         Item.NewItem(npc.getRect(), ModContent.ItemType<RoseSaber>());
+                    break;
+
+                case NPCID.IceGolem:
+                    Item.NewItem(npc.getRect(), ModContent.ItemType<FrozenHeroBlade>(), Main.rand.Next(1, 3));
                     break;
 
                 case NPCID.BloodZombie:

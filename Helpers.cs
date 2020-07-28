@@ -10,6 +10,23 @@ namespace AshModAdditions
     {
         internal const string PLACEHOLDER = nameof(AshModAdditions) + "/placeholder";
 
+        public static float Progress1toM11(float progress) => 1f - Math.Abs(1f - progress * 2f);
+        public static float Progress(float val, float min, float max) => 1f / (max - min) * (val - min);
+        public static float Progress(float val, float min, float max, float progressScale) => progressScale / (max - min) * (val - min);
+
+        // Code from absolute aquarian
+        public static bool InForest(this Player player) => player.ZoneOverworldHeight &&
+            !(player.ZoneDungeon ||
+            player.ZoneCorrupt ||
+            player.ZoneCrimson ||
+            player.ZoneHoly ||
+            player.ZoneSnow ||
+            player.ZoneUndergroundDesert ||
+            player.ZoneGlowshroom ||
+            player.ZoneMeteor ||
+            player.ZoneBeach ||
+            player.ZoneDesert);
+
         /// <summary>
         /// Finds the closest npc to the specified position
         /// </summary>

@@ -496,7 +496,7 @@ namespace AshModAdditions.NPCs.Bosses.GigaWorm
             int item = 0;
             switch (Main.rand.Next(3))
             {
-                case 0: item = ModContent.ItemType<GigatonsOfTheets>(); break;
+                case 0: item = ModContent.ItemType<GigaBlade>(); break;
                 case 1: item = ModContent.ItemType<WormGun>(); break;
                 case 2: item = ModContent.ItemType<GigaStar>(); break;
             }

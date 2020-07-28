@@ -18,7 +18,7 @@ namespace AshModAdditions.Buffs
 
         public override void Update(Player player, ref int buffIndex)
         {
-            player.GetModPlayer<AshModPlayer>().SandStormSpiritBuff = true;
+            player.GetModPlayer<AshModPlayer>().SandstormSpiritBuff = true;
         }
     }
 }

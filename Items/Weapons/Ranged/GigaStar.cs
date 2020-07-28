@@ -32,7 +32,7 @@ namespace AshModAdditions.Items.Weapons.Ranged
         {
             if (type == ProjectileID.WoodenArrowFriendly)
                 type = ProjectileID.JestersArrow;
-            Vector2 spid = new Vector2 { X = speedX, Y = speedY }.RotatedByRandom(MathHelper.PiOver4);
+            Vector2 spid = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.PiOver4);
             speedX = spid.X;
             speedY = spid.Y;
             return true;
