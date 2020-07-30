@@ -11,6 +11,8 @@ namespace AshModAdditions.Projectiles
 {
     internal static class ProjectileHelpers
     {
+        internal static bool ValidNPCTarget(NPC npc) => npc?.active is true && npc.CanBeChasedBy();
+
         internal static void ArrowAI(Projectile projectile, ref float existTime, float extraRotation = MathHelper.PiOver2)
         {
             projectile.rotation = projectile.velocity.ToRotation() + extraRotation;

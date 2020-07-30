@@ -498,7 +498,7 @@ namespace AshModAdditions.NPCs.Bosses.GigaWorm
             {
                 case 0: item = ModContent.ItemType<GigaBlade>(); break;
                 case 1: item = ModContent.ItemType<WormGun>(); break;
-                case 2: item = ModContent.ItemType<GigaStar>(); break;
+                case 2: item = ModContent.ItemType<GigaBow>(); break;
             }
             potionType = ItemID.GreaterHealingPotion;
             DropItem(item);

@@ -7,7 +7,10 @@ using Terraria.ID;
 using Terraria.GameContent.Generation;
 using Terraria.World.Generation;
 using Terraria.ModLoader;
+using Terraria.ModLoader.IO;
 using Microsoft.Xna.Framework;
+using AshModAdditions.Tiles;
+using AshModAdditions.Tiles.Ores;
 using AshModAdditions.Tiles.Warped;
 
 namespace AshModAdditions 
@@ -15,9 +18,56 @@ namespace AshModAdditions
     public class AshWorld : ModWorld
     {
         public static int WarpedTiles;
+        public static bool IridiumGen;
+
+        private static bool generatedIridium;
+
         public override void TileCountsAvailable(int[] tileCounts)
         {
             WarpedTiles = tileCounts[ModContent.TileType<WarpedSoilTile>()];
+        }
+
+        public override void PreUpdate()
+        {
+            if (IridiumGen)
+            {
+                IridiumGen = false;
+                if (!generatedIridium)
+                {
+                    generatedIridium = true;
+                    GenerateOre(ModContent.TileType<IridiumOreTile>(), Main.maxTilesX * Main.maxTilesY / 10000, new Rectangle(0, Main.maxTilesY - 120, Main.maxTilesX, 120));
+                }
+            }
+        }
+
+        public override TagCompound Save()
+        {
+            List<string> boolflags = new List<string>();
+
+            if (generatedIridium)
+                boolflags.Add("IridiumGen");
+
+            return new TagCompound
+            {
+                ["bools"] = boolflags
+            };
+        }
+
+        public override void Load(TagCompound tag)
+        {
+            var boolflags = tag.GetList<string>("bools");
+
+            generatedIridium = boolflags.Contains("IridiumGen");
+        }
+
+        public static void GenerateOre(int type, int ammount, Rectangle oreSpawnArea)
+        {
+            for(int i = 0; i < ammount; i++)
+            {
+                int oreX = Main.rand.Next(oreSpawnArea.X, oreSpawnArea.X + oreSpawnArea.Width);
+                int oreY = Main.rand.Next(oreSpawnArea.Y, oreSpawnArea.Y + oreSpawnArea.Height);
+                WorldGen.TileRunner(oreX, oreY, Main.rand.NextFloat(20), Main.rand.Next(4), type, false, Main.rand.NextFloat(4), Main.rand.NextFloat(4), false, true);
+            }
         }
 
         // Code by Starfish

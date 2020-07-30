@@ -24,11 +24,12 @@ namespace AshModAdditions.Items.Insignias
         public override void SetDefaults()
         {
             item.material = true;
+            item.accessory = true;
             item.width = 30;
             item.height = 28;
         }
 
-        public override void UpdateInventory(Player player)
+        public override void UpdateAccessory(Player player, bool hideVisual)
         {
             if (player.InForest())
             {
@@ -46,7 +47,7 @@ namespace AshModAdditions.Items.Insignias
             recipe.AddIngredient(ItemID.Wood, 10);
             recipe.AddIngredient(ItemID.Gel, 5);
             recipe.AddIngredient(ItemID.GreenSolution, 5);
-            // recipe.AddTile<LuminiteAnvilTile>();
+            recipe.AddTile<LuminiteAnvilTile>();
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

@@ -14,6 +14,7 @@ namespace AshModAdditions
     {
         public bool RedashHood, FrostiteEffect;
         public bool ZoneWarpedBiome;
+        public int HealingAbyssKnivesCooldown;
 
         public override void ResetEffects()
         {
@@ -26,6 +27,14 @@ namespace AshModAdditions
         public override void UpdateLifeRegen()
         {
             InsigniaLifeRegen();
+        }
+
+        public override void PreUpdate()
+        {
+            if(HealingAbyssKnivesCooldown > 0)
+            {
+                HealingAbyssKnivesCooldown--;
+            }
         }
 
         public override bool PreHurt(bool pvp, bool quiet, ref int damage, ref int hitDirection, ref bool crit, ref bool customDamage, ref bool playSound, ref bool genGore, ref PlayerDeathReason damageSource)
@@ -89,12 +98,14 @@ namespace AshModAdditions
 
         public override void SendCustomBiomes(BinaryWriter writer)
         {
-            writer.Write(new BitsByte(ZoneWarpedBiome));
+            //writer.Write(new BitsByte(ZoneWarpedBiome));
+            writer.Write(Helpers.FlagsByte(ZoneWarpedBiome));
         }
 
         public override void ReceiveCustomBiomes(BinaryReader reader)
         {
-            ((BitsByte)reader.ReadByte()).Retrieve(ref ZoneWarpedBiome);
+            //((BitsByte)reader.ReadByte()).Retrieve(ref ZoneWarpedBiome);
+            Helpers.RetrieveFlagsByte(reader.ReadByte(), ref ZoneWarpedBiome);
         }
     }
 }

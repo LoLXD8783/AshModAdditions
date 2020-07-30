@@ -65,6 +65,12 @@ namespace AshModAdditions
                 priority = MusicPriority.BiomeLow;
             }
 
+            if(NPC.MoonLordCountdown > 120)
+            {
+                music = GetMusicSoundSlot("The_Servant_Summons_1");
+                priority = MusicPriority.BossMedium;
+            }
+
             // TODO maybe turn this into a loop and set flags on it?
             if (config.KingSlimeTheme && NPC.AnyNPCs(NPCID.KingSlime))
             {

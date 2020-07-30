@@ -29,7 +29,7 @@ namespace AshModAdditions.Items.Weapons.Ranged
             item.rare = 2;
             item.UseSound = SoundID.Item5;
             item.noMelee = true;
-            item.shoot = mod.ProjectileType("SlowingArrow");
+            item.shoot = 10;
             item.useAmmo = AmmoID.Arrow;
             item.shootSpeed = 10f;
             item.autoReuse = false;

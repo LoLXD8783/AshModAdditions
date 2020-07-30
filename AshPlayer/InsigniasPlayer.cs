@@ -9,9 +9,7 @@ namespace AshModAdditions
         private void InsigniaLifeRegen()
         {
             if (PureInsignia)
-            {
                 player.lifeRegen += 3;
-            }
 
             if (FrigidInsignia)
                 player.lifeRegen += 3;
@@ -35,9 +33,8 @@ namespace AshModAdditions
         private void InsigniaDamageReduction(ref int damage)
         {
             if (PureInsignia)
-            {
                 damage = (int)(damage * 0.97);
-            }
+
             if (FrigidInsignia)
                 damage = (int)(damage * 0.97);
 

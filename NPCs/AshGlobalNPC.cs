@@ -75,6 +75,10 @@ namespace AshModAdditions.NPCs
                 case NPCID.Spazmatism:
                     Item.NewItem(npc.getRect(), ModContent.ItemType<UnholiteBar>(), Main.rand.Next(5, 8));
                     break;
+
+                case NPCID.MoonLordCore:
+                    AshWorld.IridiumGen = true;
+                    break;
             }
         }
 

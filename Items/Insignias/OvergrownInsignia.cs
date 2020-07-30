@@ -13,27 +13,28 @@ namespace AshModAdditions.Items.Insignias
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Frigid Insignia");
-            Tooltip.SetDefault(@"+5% all damage when in the Snow Biome
-20 defense when in the Snow Biome
-+3% damage reduction when in the Snow Biome
-+40% running speed when in the Snow Biome
-+20% melee speed when in the Snow Biome
-+3 life regen when in the Snow Biome");
+            DisplayName.SetDefault("Overgrown Insignia");
+            Tooltip.SetDefault(@"+5% all damage when in the Jungle
+20 defense when in the Jungle
++3% damage reduction when in the Jungle
++40% running speed when in the Jungle
++20% melee speed when in the Jungle
++3 life regen when in the Jungle");
         }
 
         public override void SetDefaults()
         {
             item.material = true;
+            item.accessory = true;
             item.width = 30;
             item.height = 28;
         }
 
-        public override void UpdateInventory(Player player)
+        public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            if (player.InForest())
+            if (player.ZoneJungle)
             {
-                player.GetModPlayer<AshModPlayer>().FrigidInsignia = true;
+                player.GetModPlayer<AshModPlayer>().OvergrownInsignia = true;
                 player.allDamage += 0.05f;
                 player.statDefense += 20;
                 player.accRunSpeed += 0.4f;
@@ -44,10 +45,11 @@ namespace AshModAdditions.Items.Insignias
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient<EmptyInsignia>();
-            recipe.AddIngredient(ItemID.SnowBlock, 15);
-            recipe.AddIngredient(ItemID.IceBlock, 15);
-            recipe.AddIngredient<FrozenHeroBlade>();
-            // recipe.AddTile<LuminiteAnvilTile>();
+            recipe.AddIngredient(ItemID.MudBlock, 10);
+            recipe.AddIngredient(ItemID.ChlorophyteBar, 5);
+            recipe.AddRecipeGroup(RecipeGroupID.Wood, 5);
+            recipe.AddIngredient(ItemID.JungleSpores, 6);
+            recipe.AddTile<LuminiteAnvilTile>();
             recipe.SetResult(this);
             recipe.AddRecipe();
         }
