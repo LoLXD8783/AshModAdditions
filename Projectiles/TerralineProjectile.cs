@@ -4,7 +4,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 
-namespace AshModAdditions.Projectiles
+namespace Bosspocalyps.Projectiles
 {
     class TerralineProjectile : ModProjectile
     {

@@ -3,7 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AshModAdditions.Projectiles
+namespace Bosspocalyps.Projectiles
 {
     public class SpectreBladeProjectile : ModProjectile
     {

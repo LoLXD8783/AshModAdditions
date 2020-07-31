@@ -1,7 +1,7 @@
 ﻿using Terraria;
 using Terraria.ModLoader;
 
-namespace AshModAdditions.Items.Materials
+namespace Bosspocalyps.Items.Materials
 {
     public class TerraShard : ModItem
     {

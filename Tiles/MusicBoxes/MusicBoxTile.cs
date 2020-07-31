@@ -5,7 +5,7 @@ using Terraria.ObjectData;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 
-namespace AshModAdditions.Tiles.MusicBoxes
+namespace Bosspocalyps.Tiles.MusicBoxes
 {
     public abstract class MusicBoxTile : ModTile
     {

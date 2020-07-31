@@ -8,37 +8,39 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using AshModAdditions.Config;
-using AshModAdditions.Items.MusicBoxes;
-using AshModAdditions.Tiles.MusicBoxes;
-using AshModAdditions.Tiles.Warped;
+using Bosspocalyps.Config;
+using Bosspocalyps.Items.MusicBoxes;
+using Bosspocalyps.Tiles.MusicBoxes;
+using Bosspocalyps.Tiles.Warped;
 
-namespace AshModAdditions
+namespace Bosspocalyps
 {
-    public class AshModAdditions : Mod
+    public class Bosspocalyps : Mod
     {
-        internal static AshModAdditions instance; // this field is in case we need to access the mod instance for something, as example, UI or calling a mod instance functions, such as GetPacket
+        internal static Bosspocalyps instance; // this field is in case we need to access the mod instance for something, as example, UI or calling a mod instance functions, such as GetPacket
 
         public override void Load()
         {
             instance = this;
             if (Main.dedServ) return; // below things that shouldn't load on servers
-            AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Crown_of_the_Crustacean_King_-_Atlantis_Mod"), ModContent.ItemType<KingCrabsMusicBox>(), ModContent.TileType<KingCrabsMusicBoxTile>());
-            AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Crossout"), ModContent.ItemType<GigawormMusicBox>(), ModContent.TileType<GigawormMusicBoxTile>());
-            AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/The_Ice_Theme"), ModContent.ItemType<TheIceMusicBox>(), ModContent.TileType<TheIceMusicBoxTile>());
-            AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/CoolSongThatsChillAF_2"), ModContent.ItemType<OceanNightMusicBox>(), ModContent.TileType<OceanNightMusicBoxTile>());
-            AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Spookyboiss_1"), ModContent.ItemType<KingSlimeMusicBox>(), ModContent.TileType<KingSlimeMusicBoxTile>());
-            AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Eater_Of_Worlds_Theme"), ModContent.ItemType<EaterOfWorldsMusicBox>(), ModContent.TileType<EaterOfWorldsMusicBoxTile>());
-            AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Hallow_Night_-_Ashmod_Theme"), ModContent.ItemType<HallowNightMusicBox>(), ModContent.TileType<HallowNightMusicBoxTile>());
-            AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Duke_Fishpog_Theme"), ModContent.ItemType<DukeFishronMusicBox>(), ModContent.TileType<DukeFishronMusicBoxTile>());
-            AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Lunatic-Cultist-Theme-Burden-of"), ModContent.ItemType<LunaticCultistMusicBox>(), ModContent.TileType<LunaticCultistMusicBoxTile>());
-            AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Pretty_Gamer_Boss"), ModContent.ItemType<SkeletronMusicBox>(), ModContent.TileType<SkeletronMusicBoxTile>());
-            AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Wall_Of_Flesh_Theme_-_Ashmod"), ModContent.ItemType<WallOfFleshMusicBox>(), ModContent.TileType<WallOfFleshMusicBoxTile>());
-            AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Destroyer_Theme_-_"), ModContent.ItemType<TheDestroyerMusicBox>(), ModContent.TileType<TheDestroyerMusicBoxTile>());
-            AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Skeletron_Prime_Is_American"), ModContent.ItemType<SkeletronPrimeMusicBox>(), ModContent.TileType<SkeletronPrimeMusicBoxTile>());
-            AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Typhoon_Warning"), ModContent.ItemType<TyphoonMusicBox>(), ModContent.TileType<TyphoonMusicBoxTile>());
-            AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Killography"), ModContent.ItemType<KilographyMusicBox>(), ModContent.TileType<KilographyMusicBoxTile>());
+            AddMusicBox<KingCrabsMusicBox, KingCrabsMusicBoxTile>("Crown_of_the_Crustacean_King_-_Atlantis_Mod");
+            AddMusicBox<GigawormMusicBox, GigawormMusicBoxTile>("Crossout");
+            AddMusicBox<TheIceMusicBox, TheIceMusicBoxTile>("The_Ice_Theme");
+            AddMusicBox<OceanNightMusicBox, OceanNightMusicBoxTile>("CoolSongThatsChillAF_2");
+            AddMusicBox<KingSlimeMusicBox, KingSlimeMusicBoxTile>("Spookyboiss_1");
+            AddMusicBox<EaterOfWorldsMusicBox, EaterOfWorldsMusicBoxTile>("Eater_Of_Worlds_Theme");
+            AddMusicBox<HallowNightMusicBox, HallowNightMusicBoxTile>("Hallow_Night_-_Ashmod_Theme");
+            AddMusicBox<DukeFishronMusicBox, DukeFishronMusicBoxTile>("Duke_Fishpog_Theme");
+            AddMusicBox<LunaticCultistMusicBox, LunaticCultistMusicBoxTile>("Lunatic-Cultist-Theme-Burden-of");
+            AddMusicBox<SkeletronMusicBox, SkeletronMusicBoxTile>("Pretty_Gamer_Boss");
+            AddMusicBox<WallOfFleshMusicBox, WallOfFleshMusicBoxTile>("Wall_Of_Flesh_Theme_-_Ashmod");
+            AddMusicBox<TheDestroyerMusicBox, TheDestroyerMusicBoxTile>("Destroyer_Theme_-_");
+            AddMusicBox<SkeletronPrimeMusicBox, SkeletronPrimeMusicBoxTile>("Skeletron_Prime_Is_American");
+            AddMusicBox<TyphoonMusicBox, TyphoonMusicBoxTile>("Typhoon_Warning");
+            AddMusicBox<KilographyMusicBox, KilographyMusicBoxTile>("Killography");
         }
+
+        private void AddMusicBox<TItem, TTile>(string moosic, int tileFrameY = 0) where TItem : ModItem where TTile : ModTile => AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/" + moosic), ModContent.ItemType<TItem>(), ModContent.TileType<TTile>(), tileFrameY);
 
         public override void UpdateMusic(ref int music, ref MusicPriority priority)
         {
@@ -125,13 +127,18 @@ namespace AshModAdditions
 
         public override void Unload()
         {
-            UnloadFields(Code ?? GetType().Assembly);
+            try
+            {
+                UnloadFields(Code ?? GetType().Assembly);
+            }
+            catch(Exception) { }
             instance = null;
         }
 
         private static void UnloadFields(Assembly assembly)
         {
             foreach (var type in GetTypesSafe(assembly))
+            {
                 foreach (var field in type.GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static))
                 {
                     if (field.IsInitOnly || field.IsLiteral)
@@ -144,6 +151,7 @@ namespace AshModAdditions
 
                     field.SetValue(null, null);
                 }
+            }
         }
 
         private static Type[] GetTypesSafe(Assembly assembly)

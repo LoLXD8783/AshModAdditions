@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Terraria;
 using Terraria.ModLoader;
 
-namespace AshModAdditions.Buffs
+namespace Bosspocalyps.Buffs
 {
     public abstract class SandStormSpirit : ModBuff
     {

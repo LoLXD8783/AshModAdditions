@@ -2,7 +2,7 @@ using System;
 using Terraria;
 using Terraria.ModLoader;
 
-namespace AshModAdditions.Items.Materials
+namespace Bosspocalyps.Items.Materials
 {
     public class HeroFrags : ModItem
     {

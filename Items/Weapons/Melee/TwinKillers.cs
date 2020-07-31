@@ -4,7 +4,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 
-namespace AshModAdditions.Items.Weapons.Melee
+namespace Bosspocalyps.Items.Weapons.Melee
 {
     public class TwinKillers : ModItem
     {

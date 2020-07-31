@@ -1,7 +1,7 @@
 ﻿using Terraria;
 using Terraria.ModLoader;
 
-namespace AshModAdditions.NPCs
+namespace Bosspocalyps.NPCs
 {
     public partial class AshGlobalNPC : GlobalNPC
     {

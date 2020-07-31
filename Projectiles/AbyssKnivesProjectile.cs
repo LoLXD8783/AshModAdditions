@@ -3,11 +3,11 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 
-namespace AshModAdditions.Projectiles
+namespace Bosspocalyps.Projectiles
 {
     class AbyssKnivesProjectile : ModProjectile
     {
-        float Range => 20 * 16;
+        const float Range = 20 * 16;
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Abyss Knives");
@@ -43,7 +43,9 @@ namespace AshModAdditions.Projectiles
                     return;
                 }
                 else
+                {
                     Idle();
+                }
 
             }
             else
@@ -66,7 +68,7 @@ namespace AshModAdditions.Projectiles
                 {
                     int heal = Main.rand.Next(5) + 1;
                     player.lifeSteal -= heal;
-                    ashmodplayer.HealingAbyssKnivesCooldown = 30;
+                    ashmodplayer.HealingAbyssKnivesCooldown = 6;
                     HealingProjectile.SpawnFor(player, projectile.Center, default, heal, dustammount: 3, dustSpawnRate: 1, projectilevelocity: 4, dustcolor: Color.White);
                 }
             }
@@ -75,7 +77,7 @@ namespace AshModAdditions.Projectiles
                 Vector2 v = projectile.velocity / 2;
                 for(int i = 0; i < 5; i++)
                 {
-                    Helpers.NewProjectile<AbyssKnivesProjectile>(projectile.position, v.RotatedByRandom(MathHelper.TwoPi * 100), projectile.damage / 5, projectile.knockBack, projectile.owner, 101);
+                    Helpers.NewProjectile<AbyssKnivesProjectile>(projectile.position, v.RotatedByRandom(MathHelper.TwoPi * 100), projectile.damage, projectile.knockBack, projectile.owner, 101);
                 }
             }
             projectile.Kill();
@@ -97,9 +99,9 @@ namespace AshModAdditions.Projectiles
 
         private void Idle()
         {
-            projectile.rotation += 0.3f;
+            projectile.rotation += Main.rand.NextFloat(0.5f) + 0.1f;
             projectile.velocity.Y += 0.2f;
-            projectile.velocity.X *= 0.97f;
+            projectile.velocity.X *= 0.98f;
         }
 
         private void Whenchildren()

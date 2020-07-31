@@ -4,7 +4,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 
-namespace AshModAdditions.Items.Weapons.Ranged
+namespace Bosspocalyps.Items.Weapons.Ranged
 {
     public class GigaBow : ModItem
     {

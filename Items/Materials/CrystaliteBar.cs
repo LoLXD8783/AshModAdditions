@@ -2,9 +2,9 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using AshModAdditions.Tiles;
+using Bosspocalyps.Tiles;
 
-namespace AshModAdditions.Items.Materials
+namespace Bosspocalyps.Items.Materials
 {
     public class CrystaliteBar : ModItem
     {

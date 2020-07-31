@@ -3,7 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AshModAdditions.Items.Tiles.Ores
+namespace Bosspocalyps.Items.Tiles.Ores
 {
     public abstract class OreItem : ModItem
     {

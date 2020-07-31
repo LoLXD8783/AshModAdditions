@@ -3,10 +3,10 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.ObjectData;
 using Terraria.ModLoader;
-using AshModAdditions.Items.MusicBoxes;
+using Bosspocalyps.Items.MusicBoxes;
 using Microsoft.Xna.Framework;
 
-namespace AshModAdditions.Tiles.MusicBoxes
+namespace Bosspocalyps.Tiles.MusicBoxes
 {
     public class KilographyMusicBoxTile : MusicBoxTile
     {

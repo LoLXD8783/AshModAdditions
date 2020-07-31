@@ -3,9 +3,9 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using AshModAdditions.Items.Materials;
+using Bosspocalyps.Items.Materials;
 
-namespace AshModAdditions.Items.Equippables
+namespace Bosspocalyps.Items.Equippables
 {
     public class CombiniteShield : ModItem
     {

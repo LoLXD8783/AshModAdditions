@@ -4,9 +4,9 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using AshModAdditions.Projectiles;
+using Bosspocalyps.Projectiles;
 
-namespace AshModAdditions.Items.Weapons.Melee
+namespace Bosspocalyps.Items.Weapons.Melee
 {
     public class SpectreBlade : ModItem
     {

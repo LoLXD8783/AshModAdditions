@@ -3,12 +3,12 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using AshModAdditions.Items.Materials;
-using AshModAdditions.Items.Weapons.Melee;
-using AshModAdditions.Items.Weapons.Ranged;
-using AshModAdditions.NPCs.Enemys;
+using Bosspocalyps.Items.Materials;
+using Bosspocalyps.Items.Weapons.Melee;
+using Bosspocalyps.Items.Weapons.Ranged;
+using Bosspocalyps.NPCs.Enemys;
 
-namespace AshModAdditions.NPCs.Bosses.TheIce
+namespace Bosspocalyps.NPCs.Bosses.TheIce
 {
     public class TheIce : ModNPC
     {
@@ -34,7 +34,7 @@ namespace AshModAdditions.NPCs.Bosses.TheIce
             npc.height = 174;
             npc.damage = 25;
 
-            music = AshModAdditions.instance.GetMusicSoundSlot("The_Ice_Theme");
+            music = Bosspocalyps.instance.GetMusicSoundSlot("The_Ice_Theme");
             musicPriority = MusicPriority.BossLow;
         }
 

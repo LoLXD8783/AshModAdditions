@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Terraria;
 using Terraria.ModLoader;
 
-namespace AshModAdditions.Backgrounds
+namespace Bosspocalyps.Backgrounds
 {
     public class WarpedBiomBGStyle : ModSurfaceBgStyle
     {

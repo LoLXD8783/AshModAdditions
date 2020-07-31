@@ -1,4 +1,5 @@
-displayName = Ashmod Additions
+displayName = Bosspocalyps
 author = RedyDashy
 version = 0.1
-buildIgnore = build.txt, .gitattributes, .gitignore, .git/, .vs/, .idea/, bin/, obj/, Thumbs.db, Built, Built/, *.tmod
+homepage = https://forums.terraria.org/index.php?threads/bosspocalyps.96573/
+buildIgnore = build.txt, .gitattributes, .gitignore, .git/, .vs/, .idea/, bin/, obj/, Thumbs.db, Built, Built/, Built/wip, Built/wip/, *.tmod

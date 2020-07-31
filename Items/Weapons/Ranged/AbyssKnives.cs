@@ -3,10 +3,11 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using AshModAdditions.Projectiles;
-using AshModAdditions.Tiles;
+using Bosspocalyps.Projectiles;
+using Bosspocalyps.Tiles;
+using Bosspocalyps.Items.Materials;
 
-namespace AshModAdditions.Items.Weapons.Ranged
+namespace Bosspocalyps.Items.Weapons.Ranged
 {
     public class AbyssKnives : ModItem
     {
@@ -21,7 +22,7 @@ namespace AshModAdditions.Items.Weapons.Ranged
             item.melee = true;
             item.noMelee = true;
             item.noUseGraphic = true;
-            item.damage = 50;
+            item.damage = 120;
             item.knockBack = 2f;
             item.useTime = 15;
             item.useAnimation = 15;
@@ -44,7 +45,7 @@ namespace AshModAdditions.Items.Weapons.Ranged
             {
                 Projectile.NewProjectile(position, new Vector2(speedX, speedY).RotatedByRandom(MathHelper.PiOver4 / 2), type, damage, knockBack, player.whoAmI);
             }
-            return false;
+            return true;
         }
 
         public override void AddRecipes()
@@ -54,6 +55,8 @@ namespace AshModAdditions.Items.Weapons.Ranged
             recipe.AddIngredient(ItemID.BeetleHusk, 10);
             recipe.AddIngredient(ItemID.ChlorophyteBar, 10);
             recipe.AddIngredient(ItemID.LunarBar, 5);
+            recipe.AddIngredient<IridiumIngot>(10);
+            recipe.AddIngredient<NeutroniumBar>(5);
             recipe.AddTile<LuminiteAnvilTile>();
             recipe.SetResult(this);
             recipe.AddRecipe();

@@ -4,12 +4,12 @@ using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace AshModAdditions
+namespace Bosspocalyps
 {
     public static class Helpers
     {
         // constants
-        internal const string PLACEHOLDER = nameof(AshModAdditions) + "/placeholder";
+        internal const string PLACEHOLDER = nameof(Bosspocalyps) + "/placeholder";
         public const byte BYTE_FLAG1 = 1 << 0;
         public const byte BYTE_FLAG2 = 1 << 1;
         public const byte BYTE_FLAG3 = 1 << 2;

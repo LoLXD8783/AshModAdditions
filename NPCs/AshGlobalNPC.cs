@@ -3,12 +3,12 @@ using Terraria;
 using Terraria.GameContent.Events;
 using Terraria.ID;
 using Terraria.ModLoader;
-using AshModAdditions.Items.Equippables;
-using AshModAdditions.Items.Materials;
-using AshModAdditions.Items.Weapons.Melee;
-using AshModAdditions.Items.Weapons.Ranged;
+using Bosspocalyps.Items.Equippables;
+using Bosspocalyps.Items.Materials;
+using Bosspocalyps.Items.Weapons.Melee;
+using Bosspocalyps.Items.Weapons.Ranged;
 
-namespace AshModAdditions.NPCs
+namespace Bosspocalyps.NPCs
 {
     public partial class AshGlobalNPC : GlobalNPC
     {

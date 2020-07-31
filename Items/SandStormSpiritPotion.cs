@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AshModAdditions.Items
+namespace Bosspocalyps.Items
 {
     // TODO
     class SandStormSpiritPotion

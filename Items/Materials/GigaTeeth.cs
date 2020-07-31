@@ -2,7 +2,7 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AshModAdditions.Items.Materials
+namespace Bosspocalyps.Items.Materials
 {
     public class GigaTeeth : ModItem
     {

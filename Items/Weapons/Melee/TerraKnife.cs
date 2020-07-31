@@ -3,9 +3,9 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using AshModAdditions.Items.Materials;
+using Bosspocalyps.Items.Materials;
 
-namespace AshModAdditions.Items.Weapons.Melee
+namespace Bosspocalyps.Items.Weapons.Melee
 {
     public class TerraKnife : ModItem
     {

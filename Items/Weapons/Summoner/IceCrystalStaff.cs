@@ -8,10 +8,10 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using AshModAdditions.Projectiles;
-using AshModAdditions.Items.Materials;
+using Bosspocalyps.Projectiles;
+using Bosspocalyps.Items.Materials;
 
-namespace AshModAdditions.Items.Weapons.Summoner
+namespace Bosspocalyps.Items.Weapons.Summoner
 {
     public class IceCrystalStaff : ModItem
     {

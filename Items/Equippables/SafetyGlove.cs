@@ -3,7 +3,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 
-namespace AshModAdditions.Items.Equippables
+namespace Bosspocalyps.Items.Equippables
 {
     public class SafetyGlove : ModItem
     {

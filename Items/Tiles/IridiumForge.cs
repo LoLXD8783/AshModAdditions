@@ -1,9 +1,9 @@
 ﻿using Terraria.ID;
 using Terraria.ModLoader;
-using AshModAdditions.Items.Tiles.Ores;
-using AshModAdditions.Tiles;
+using Bosspocalyps.Items.Tiles.Ores;
+using Bosspocalyps.Tiles;
 
-namespace AshModAdditions.Items.Tiles
+namespace Bosspocalyps.Items.Tiles
 {
     public class IridiumForge : ModItem
     {

@@ -9,7 +9,7 @@ using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace AshModAdditions.NPCs.Bosses.Guardian
+namespace Bosspocalyps.NPCs.Bosses.Guardian
 {
     public class Guardian : ModNPC
     {

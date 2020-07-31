@@ -1,9 +1,9 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using AshModAdditions.Items.Materials;
+using Bosspocalyps.Items.Materials;
 
-namespace AshModAdditions.Items.Armor.Redash
+namespace Bosspocalyps.Items.Armor.Redash
 {
     [AutoloadEquip(EquipType.Head)]
     public class RedashHeadgear : ModItem

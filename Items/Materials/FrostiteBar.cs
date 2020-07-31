@@ -9,7 +9,7 @@ using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace AshModAdditions.Items.Materials
+namespace Bosspocalyps.Items.Materials
 {
     public class FrostiteBar : ModItem
     {

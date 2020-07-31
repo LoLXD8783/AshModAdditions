@@ -1,9 +1,9 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using AshModAdditions.Items.Materials;
+using Bosspocalyps.Items.Materials;
 
-namespace AshModAdditions.Items.Armor.Crystalite
+namespace Bosspocalyps.Items.Armor.Crystalite
 {
     [AutoloadEquip(EquipType.Legs)]
     public class CrystaliteLeggings : ModItem

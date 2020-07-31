@@ -1,9 +1,9 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using AshModAdditions.Items.Materials;
+using Bosspocalyps.Items.Materials;
 
-namespace AshModAdditions.Items.Weapons.Melee
+namespace Bosspocalyps.Items.Weapons.Melee
 {
     public class CrystaliteHammer : ModItem
     {

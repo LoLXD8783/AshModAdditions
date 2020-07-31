@@ -2,10 +2,10 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using AshModAdditions.Items.Materials;
-using AshModAdditions.Tiles;
+using Bosspocalyps.Items.Materials;
+using Bosspocalyps.Tiles;
 
-namespace AshModAdditions.Items.Tiles
+namespace Bosspocalyps.Items.Tiles
 {
     public class UnholyResearchStation : ModItem
     {

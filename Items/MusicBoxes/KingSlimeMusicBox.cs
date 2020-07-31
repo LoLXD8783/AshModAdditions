@@ -1,9 +1,9 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using AshModAdditions.Tiles.MusicBoxes;
+using Bosspocalyps.Tiles.MusicBoxes;
 
-namespace AshModAdditions.Items.MusicBoxes
+namespace Bosspocalyps.Items.MusicBoxes
 {
     public class KingSlimeMusicBox : ModItem
     {

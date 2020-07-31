@@ -9,7 +9,7 @@ using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace AshModAdditions.Tiles.Ores
+namespace Bosspocalyps.Tiles.Ores
 {
     public abstract class OreTile : ModTile
     {

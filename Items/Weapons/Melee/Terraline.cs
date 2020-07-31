@@ -1,11 +1,11 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using AshModAdditions.Items.Materials;
-using AshModAdditions.Projectiles;
+using Bosspocalyps.Items.Materials;
+using Bosspocalyps.Projectiles;
 using Microsoft.Xna.Framework;
 
-namespace AshModAdditions.Items.Weapons.Melee
+namespace Bosspocalyps.Items.Weapons.Melee
 {
     public class Terraline : ModItem
     {

@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Terraria;
 using Terraria.ModLoader;
-using AshModAdditions.Tiles.Ores;
+using Bosspocalyps.Tiles.Ores;
 
-namespace AshModAdditions.Items.Tiles.Ores
+namespace Bosspocalyps.Items.Tiles.Ores
 {
     public class IridiumOre : OreItem
     {

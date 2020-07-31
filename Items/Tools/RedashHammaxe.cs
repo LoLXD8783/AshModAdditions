@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using AshModAdditions.Items.Materials;
+using Bosspocalyps.Items.Materials;
 
-namespace AshModAdditions.Items.Tools
+namespace Bosspocalyps.Items.Tools
 {
     public class RedashHammaxe : ModItem
     {

@@ -1,9 +1,9 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using AshModAdditions.Tiles;
+using Bosspocalyps.Tiles;
 
-namespace AshModAdditions.Items.Tiles
+namespace Bosspocalyps.Items.Tiles
 {
     class LuminiteAnvil : ModItem
     {

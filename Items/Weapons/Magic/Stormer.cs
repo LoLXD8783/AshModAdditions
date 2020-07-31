@@ -2,10 +2,10 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
-using AshModAdditions.Projectiles;
+using Bosspocalyps.Projectiles;
 using Microsoft.Xna.Framework;
 
-namespace AshModAdditions.Items.Weapons.Magic
+namespace Bosspocalyps.Items.Weapons.Magic
 {
     public class Stormer : ModItem
     {

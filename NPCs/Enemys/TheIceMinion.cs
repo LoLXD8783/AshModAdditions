@@ -4,9 +4,9 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using AshModAdditions.NPCs.Bosses.TheIce;
+using Bosspocalyps.NPCs.Bosses.TheIce;
 
-namespace AshModAdditions.NPCs.Enemys
+namespace Bosspocalyps.NPCs.Enemys
 {
     public class TheIceMinion : ModNPC
     {

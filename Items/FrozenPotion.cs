@@ -2,9 +2,9 @@
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
-using AshModAdditions.Buffs;
+using Bosspocalyps.Buffs;
 
-namespace AshModAdditions.Items
+namespace Bosspocalyps.Items
 {
     public class FrozenPotion : ModItem
     {

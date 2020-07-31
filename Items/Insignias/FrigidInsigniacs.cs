@@ -3,11 +3,11 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using AshModAdditions.Items.Materials;
-using AshModAdditions.Tiles;
-using AshModAdditions.Items.Weapons.Melee;
+using Bosspocalyps.Items.Materials;
+using Bosspocalyps.Tiles;
+using Bosspocalyps.Items.Weapons.Melee;
 
-namespace AshModAdditions.Items.Insignias
+namespace Bosspocalyps.Items.Insignias
 {
     class FrigidInsignia : ModItem
     {

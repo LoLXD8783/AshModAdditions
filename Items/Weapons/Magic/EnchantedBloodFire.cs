@@ -3,9 +3,9 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
-using AshModAdditions.Projectiles;
+using Bosspocalyps.Projectiles;
 
-namespace AshModAdditions.Items.Weapons.Magic
+namespace Bosspocalyps.Items.Weapons.Magic
 {
     public class EnchantedBloodFire : ModItem
     {

@@ -3,7 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AshModAdditions.Items.Weapons.Ranged
+namespace Bosspocalyps.Items.Weapons.Ranged
 {
     public class StaticBow : ModItem
     {

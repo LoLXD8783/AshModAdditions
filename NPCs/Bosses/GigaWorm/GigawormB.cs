@@ -5,7 +5,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AshModAdditions.NPCs.Bosses.GigaWorm
+namespace Bosspocalyps.NPCs.Bosses.GigaWorm
 {
     public class GigaWormB : ModNPC
     {

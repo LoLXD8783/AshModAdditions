@@ -1,7 +1,7 @@
 ﻿using Terraria;
 using Terraria.ModLoader;
 
-namespace AshModAdditions
+namespace Bosspocalyps
 {
     public partial class AshModPlayer : ModPlayer
     {

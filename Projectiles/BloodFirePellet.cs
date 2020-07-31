@@ -2,7 +2,7 @@
 using Terraria;
 using Terraria.ModLoader;
 
-namespace AshModAdditions.Projectiles
+namespace Bosspocalyps.Projectiles
 {
     public class BloodFirePellet : ModProjectile
     {

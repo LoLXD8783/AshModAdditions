@@ -2,7 +2,7 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AshModAdditions.Items.Tools
+namespace Bosspocalyps.Items.Tools
 {
     class CrystaliteAxe : ModItem
     {

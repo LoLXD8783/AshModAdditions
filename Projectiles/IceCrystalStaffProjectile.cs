@@ -9,7 +9,7 @@ using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace AshModAdditions.Projectiles
+namespace Bosspocalyps.Projectiles
 {
     public class IceCrystalStaffProjectile : ModProjectile
     {

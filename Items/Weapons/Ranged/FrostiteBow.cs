@@ -3,11 +3,11 @@ using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
-using AshModAdditions.Items.Materials;
+using Bosspocalyps.Items.Materials;
 using Microsoft.Xna.Framework;
-using AshModAdditions.Projectiles;
+using Bosspocalyps.Projectiles;
 
-namespace AshModAdditions.Items.Weapons.Ranged
+namespace Bosspocalyps.Items.Weapons.Ranged
 {
     class FrostiteBow : ModItem
     {

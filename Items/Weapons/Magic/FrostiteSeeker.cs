@@ -1,9 +1,9 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using AshModAdditions.Projectiles;
+using Bosspocalyps.Projectiles;
 
-namespace AshModAdditions.Items.Weapons.Magic
+namespace Bosspocalyps.Items.Weapons.Magic
 {
     public class FrostiteSeeker : ModItem
     {

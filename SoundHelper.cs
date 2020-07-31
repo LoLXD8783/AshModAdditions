@@ -9,7 +9,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 
-namespace AshModAdditions
+namespace Bosspocalyps
 {
     public static class SoundHelper
     {

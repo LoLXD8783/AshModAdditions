@@ -4,11 +4,11 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using AshModAdditions.Items.Materials;
-using AshModAdditions.Projectiles;
-using AshModAdditions.Tiles;
+using Bosspocalyps.Items.Materials;
+using Bosspocalyps.Projectiles;
+using Bosspocalyps.Tiles;
 
-namespace AshModAdditions.Items.Weapons.Melee
+namespace Bosspocalyps.Items.Weapons.Melee
 {
     public class BloodFireGlove : ModItem
     {

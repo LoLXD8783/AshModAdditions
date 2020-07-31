@@ -1,6 +1,6 @@
-﻿using AshModAdditions.Items.Weapons.Melee;
-using AshModAdditions.Items.Weapons.Ranged;
-using AshModAdditions.NPCs.Bosses.GigaWorm.KiloWorm;
+﻿using Bosspocalyps.Items.Weapons.Melee;
+using Bosspocalyps.Items.Weapons.Ranged;
+using Bosspocalyps.NPCs.Bosses.GigaWorm.KiloWorm;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -8,7 +8,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AshModAdditions.NPCs.Bosses.GigaWorm
+namespace Bosspocalyps.NPCs.Bosses.GigaWorm
 {
     [AutoloadBossHead]
     public class GigaWormH : ModNPC

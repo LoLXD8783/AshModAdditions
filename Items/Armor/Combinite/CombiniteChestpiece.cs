@@ -1,9 +1,9 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using AshModAdditions.Items.Materials;
+using Bosspocalyps.Items.Materials;
 
-namespace AshModAdditions.Items.Armor.Combinite
+namespace Bosspocalyps.Items.Armor.Combinite
 {
     [AutoloadEquip(EquipType.Body)]
     public class CombiniteChestpiece : ModItem

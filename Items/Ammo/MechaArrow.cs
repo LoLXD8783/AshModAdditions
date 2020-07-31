@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria;
+﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using AshModAdditions.Projectiles.Ammo;
+using Bosspocalyps.Projectiles.Ammo;
 
-namespace AshModAdditions.Items.Ammo
+namespace Bosspocalyps.Items.Ammo
 {
     public class MechaArrow : ModItem
     {

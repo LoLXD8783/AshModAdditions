@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace AshModAdditions.Items.Weapons.Magic
+namespace Bosspocalyps.Items.Weapons.Magic
 {
     public abstract class MushorStaff : ModItem
     {

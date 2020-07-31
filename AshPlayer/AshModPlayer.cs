@@ -5,10 +5,10 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using AshModAdditions.Tiles.Warped;
+using Bosspocalyps.Tiles.Warped;
 using Terraria.DataStructures;
 
-namespace AshModAdditions
+namespace Bosspocalyps
 {
     public partial class AshModPlayer : ModPlayer
     {

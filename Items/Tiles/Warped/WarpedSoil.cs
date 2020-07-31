@@ -1,9 +1,9 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using AshModAdditions.Tiles.Warped;
+using Bosspocalyps.Tiles.Warped;
 
-namespace AshModAdditions.Items.Tiles.Warped
+namespace Bosspocalyps.Items.Tiles.Warped
 {
     public class WarpedSoil : ModItem
     {

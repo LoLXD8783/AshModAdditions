@@ -8,10 +8,10 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using AshModAdditions.Projectiles;
-using AshModAdditions.Buffs.Debuffs;
+using Bosspocalyps.Projectiles;
+using Bosspocalyps.Buffs.Debuffs;
 
-namespace AshModAdditions.Projectiles.Ammo
+namespace Bosspocalyps.Projectiles.Ammo
 {
     public class MechaArrowProjectile : ModProjectile
     {

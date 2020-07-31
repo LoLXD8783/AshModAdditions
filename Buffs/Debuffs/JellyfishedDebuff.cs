@@ -1,8 +1,8 @@
 ﻿using Terraria;
 using Terraria.ModLoader;
-using AshModAdditions.NPCs;
+using Bosspocalyps.NPCs;
 
-namespace AshModAdditions.Buffs.Debuffs
+namespace Bosspocalyps.Buffs.Debuffs
 {
     public class JellyfishedDebuff : ModBuff
     {

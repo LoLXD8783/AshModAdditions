@@ -1,7 +1,7 @@
 ﻿using Terraria;
 using Terraria.ModLoader;
 
-namespace AshModAdditions.Buffs
+namespace Bosspocalyps.Buffs
 {
     public class FrozenPotionBuff : ModBuff
     {

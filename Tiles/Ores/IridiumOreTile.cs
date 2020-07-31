@@ -7,9 +7,9 @@ using Terraria;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using AshModAdditions.Items.Tiles.Ores;
+using Bosspocalyps.Items.Tiles.Ores;
 
-namespace AshModAdditions.Tiles.Ores
+namespace Bosspocalyps.Tiles.Ores
 {
     public class IridiumOreTile : OreTile
     {

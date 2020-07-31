@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace AshModAdditions.Tiles.Warped
+namespace Bosspocalyps.Tiles.Warped
 {
     public class WarpedSoilTile : ModTile
     {

@@ -9,7 +9,7 @@ using Terraria.ModLoader;
 using Terraria.ModLoader.Config;
 using Microsoft.Xna.Framework;
 
-namespace AshModAdditions.Config
+namespace Bosspocalyps.Config
 {
     public class MusicConfig : ModConfig
     {

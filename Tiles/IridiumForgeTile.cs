@@ -6,9 +6,9 @@ using Terraria.ObjectData;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using AshModAdditions.Items.Tiles;
+using Bosspocalyps.Items.Tiles;
 
-namespace AshModAdditions.Tiles
+namespace Bosspocalyps.Tiles
 {
     public class IridiumForgeTile : ModTile
     {

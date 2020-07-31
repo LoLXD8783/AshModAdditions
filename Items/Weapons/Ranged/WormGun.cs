@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace AshModAdditions.Items.Weapons.Ranged
+namespace Bosspocalyps.Items.Weapons.Ranged
 {
     public class WormGun : ModItem
     {

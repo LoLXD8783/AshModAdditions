@@ -4,7 +4,7 @@ using Terraria.ID;
 using Terraria.ObjectData;
 using Terraria.ModLoader;
 
-namespace AshModAdditions.Tiles
+namespace Bosspocalyps.Tiles
 {
     class LuminiteAnvilTile : ModTile
     {

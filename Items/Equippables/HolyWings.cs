@@ -2,7 +2,7 @@ using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;
 
-namespace AshModAdditions.Items.Equippables
+namespace Bosspocalyps.Items.Equippables
 {
     [AutoloadEquip(EquipType.Wings)]
     public class HolyWings : ModItem

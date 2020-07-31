@@ -1,8 +1,8 @@
 ﻿using Terraria;
 using Terraria.ModLoader;
-using AshModAdditions.Items.MusicBoxes;
+using Bosspocalyps.Items.MusicBoxes;
 
-namespace AshModAdditions.Tiles.MusicBoxes
+namespace Bosspocalyps.Tiles.MusicBoxes
 {
     public class DukeFishronMusicBoxTile : MusicBoxTile
     {

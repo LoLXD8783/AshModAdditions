@@ -1,9 +1,9 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using AshModAdditions.NPCs.Bosses.TheIce;
+using Bosspocalyps.NPCs.Bosses.TheIce;
 
-namespace AshModAdditions.Items
+namespace Bosspocalyps.Items
 {
     public class AncientIceShard : ModItem
     {
