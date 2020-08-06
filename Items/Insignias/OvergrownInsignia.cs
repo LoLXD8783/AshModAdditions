@@ -34,7 +34,7 @@ namespace Bosspocalyps.Items.Insignias
         {
             if (player.ZoneJungle)
             {
-                player.GetModPlayer<AshModPlayer>().OvergrownInsignia = true;
+                player.GetModPlayer<BosspocalypsModPlayer>().OvergrownInsignia = true;
                 player.allDamage += 0.05f;
                 player.statDefense += 20;
                 player.accRunSpeed += 0.4f;

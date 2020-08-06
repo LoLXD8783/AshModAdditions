@@ -15,12 +15,12 @@ namespace Bosspocalyps.Buffs.Debuffs
 
         public override void Update(NPC npc, ref int buffIndex)
         {
-            npc.GetGlobalNPC<AshGlobalNPC>().JellyfishedDebuff = true;
+            npc.GetGlobalNPC<BGlobalNPC>().JellyfishedDebuff = true;
         }
 
         public override void Update(Player player, ref int buffIndex)
         {
-            player.GetModPlayer<AshModPlayer>().JellyfishedDebuff = true;
+            player.GetModPlayer<BosspocalypsModPlayer>().JellyfishedDebuff = true;
         }
     }
 }

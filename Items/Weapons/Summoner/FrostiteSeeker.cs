@@ -2,8 +2,9 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 using Bosspocalyps.Projectiles;
+using Bosspocalyps.Buffs.Minions;
 
-namespace Bosspocalyps.Items.Weapons.Magic
+namespace Bosspocalyps.Items.Weapons.Summoner
 {
     public class FrostiteSeeker : ModItem
     {
@@ -22,6 +23,8 @@ namespace Bosspocalyps.Items.Weapons.Magic
             item.useTime = 20;
             item.useAnimation = 20;
             item.useStyle = ItemUseStyleID.HoldingOut;
+            item.buffType = ModContent.BuffType<FrostiteSeekerBuff>();
+            item.buffTime = 10;
             item.shoot = ModContent.ProjectileType<FrostiteSeekerProjectile>();
             item.shootSpeed = 10;
         }

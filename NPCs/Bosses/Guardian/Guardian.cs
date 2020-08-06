@@ -11,7 +11,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Bosspocalyps.NPCs.Bosses.Guardian
 {
-    public class Guardian : ModNPC
+    public abstract class Guardian : ModNPC
     {
         Player target;
         public override void SetStaticDefaults()

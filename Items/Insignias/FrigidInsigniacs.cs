@@ -34,7 +34,7 @@ namespace Bosspocalyps.Items.Insignias
         {
             if (player.ZoneSnow)
             {
-                player.GetModPlayer<AshModPlayer>().FrigidInsignia = true;
+                player.GetModPlayer<BosspocalypsModPlayer>().FrigidInsignia = true;
                 player.allDamage += 0.05f;
                 player.statDefense += 20;
                 player.accRunSpeed += 0.4f;

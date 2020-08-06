@@ -1,24 +1,30 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Bosspocalyps.Tiles.Warped;
-using Terraria.DataStructures;
+using Bosspocalyps.Projectiles;
 
 namespace Bosspocalyps
 {
-    public partial class AshModPlayer : ModPlayer
+    public partial class BosspocalypsModPlayer : ModPlayer
     {
         public bool RedashHood, FrostiteEffect;
         public bool ZoneWarpedBiome;
         public int HealingAbyssKnivesCooldown;
+        public LinkedList<int> SurroundingTEProjs = new LinkedList<int>();
+        public int TTBTEPCTimer;
+        public float TTBTEPCRotation;
 
         public override void ResetEffects()
         {
             ResetBuffs();
+            ResetInsignias();
             RedashHood = false;
             FrostiteEffect = false;
             IceColdPotion = false;
@@ -34,6 +40,25 @@ namespace Bosspocalyps
             if(HealingAbyssKnivesCooldown > 0)
             {
                 HealingAbyssKnivesCooldown--;
+            }
+
+
+            UpdateTEProjs();
+
+            TTBTEPCRotation += 0.2f;
+        }
+
+        private void UpdateTEProjs()
+        {
+            LinkedListNode<int> f = SurroundingTEProjs.First;
+            int d = 0;
+            while (f != null)
+            {
+                Projectile proj = Main.projectile[f.Value];
+                if (!proj.active || proj.type != ProjectileID.LightBeam || proj.owner != player.whoAmI)
+                    SurroundingTEProjs.Remove(f);
+                proj.ai[0] = d++;
+                f = f.Next;
             }
         }
 
@@ -86,26 +111,26 @@ namespace Bosspocalyps
 
         public override bool CustomBiomesMatch(Player other)
         {
-            var modp = other.GetModPlayer<AshModPlayer>();
+            var modp = other.GetModPlayer<BosspocalypsModPlayer>();
             return ZoneWarpedBiome == modp.ZoneWarpedBiome;
         }
 
         public override void CopyCustomBiomesTo(Player other)
         {
-            var modp = other.GetModPlayer<AshModPlayer>();
+            var modp = other.GetModPlayer<BosspocalypsModPlayer>();
             modp.ZoneWarpedBiome = ZoneWarpedBiome;
         }
 
         public override void SendCustomBiomes(BinaryWriter writer)
         {
-            //writer.Write(new BitsByte(ZoneWarpedBiome));
-            writer.Write(Helpers.FlagsByte(ZoneWarpedBiome));
+            writer.Write(new BitsByte(ZoneWarpedBiome));
+            //writer.Write(Helpers.FlagsByte(ZoneWarpedBiome));
         }
 
         public override void ReceiveCustomBiomes(BinaryReader reader)
         {
-            //((BitsByte)reader.ReadByte()).Retrieve(ref ZoneWarpedBiome);
-            Helpers.RetrieveFlagsByte(reader.ReadByte(), ref ZoneWarpedBiome);
+            ((BitsByte)reader.ReadByte()).Retrieve(ref ZoneWarpedBiome);
+            //Helpers.RetrieveFlagsByte(reader.ReadByte(), ref ZoneWarpedBiome);
         }
     }
 }

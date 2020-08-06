@@ -10,7 +10,7 @@ using Bosspocalyps.Items.Weapons.Ranged;
 
 namespace Bosspocalyps.NPCs
 {
-    public partial class AshGlobalNPC : GlobalNPC
+    public partial class BGlobalNPC : GlobalNPC
     {
         public override bool InstancePerEntity => true;
 

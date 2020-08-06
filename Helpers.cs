@@ -1,5 +1,6 @@
 ﻿using System;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -46,6 +47,12 @@ namespace Bosspocalyps
             flag6 = (b & BYTE_FLAG7) != 0;
             flag7 = (b & BYTE_FLAG8) != 0;
         }
+
+        public static void AddBuff<T>(this Player player, int time1, bool quiet = true) where T : ModBuff => player.AddBuff(ModContent.BuffType<T>(), time1, quiet);
+
+        public static bool HasBuff<T>(this Player player) where T : ModBuff => player.HasBuff(ModContent.BuffType<T>());
+
+        public static bool IsAlive(this Player player) => player?.active is true && (!player.dead || player.ghost);
 
         // Code from absolute aquarian
         public static bool InForest(this Player player) => player.ZoneOverworldHeight &&
@@ -111,6 +118,13 @@ namespace Bosspocalyps
 
         public static Projectile NewProjectileDirect<T>(Vector2 position, Vector2 velocity, int Damage, float KnockBack, int Owner = 255, float ai0 = 0, float ai1 = 0) where T : ModProjectile => Main.projectile[Projectile.NewProjectile(position, velocity, ModContent.ProjectileType<T>(), Damage, KnockBack, Owner, ai0, ai1)];
         public static int NewProjectile<T>(Vector2 position, Vector2 velocity, int Damage, float KnockBack, int Owner = 255, float ai0 = 0, float ai1 = 0) where T : ModProjectile => Projectile.NewProjectile(position, velocity, ModContent.ProjectileType<T>(), Damage, KnockBack, Owner, ai0, ai1);
+
+        public static int ResolveNetProjectileIdentity(int proj)
+        {
+            if (Main.netMode == NetmodeID.SinglePlayer)
+                return proj;
+            return Main.projectileIdentity[Main.myPlayer, proj];
+        }
 
         // misc?
         public static bool TimerHit(ref int timer, int hitmark = 60)

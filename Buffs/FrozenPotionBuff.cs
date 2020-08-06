@@ -14,7 +14,7 @@ namespace Bosspocalyps.Buffs
 
         public override void Update(Player player, ref int buffIndex)
         {
-            player.GetModPlayer<AshModPlayer>().IceColdPotion = true;
+            player.GetModPlayer<BosspocalypsModPlayer>().IceColdPotion = true;
         }
     }
 }

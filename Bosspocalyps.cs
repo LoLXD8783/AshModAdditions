@@ -48,7 +48,7 @@ namespace Bosspocalyps
 
             var config = ModContent.GetInstance<MusicConfig>();
 
-            var modp = Main.LocalPlayer.GetModPlayer<AshModPlayer>();
+            var modp = Main.LocalPlayer.GetModPlayer<BosspocalypsModPlayer>();
             if (modp.ZoneWarpedBiome)
             {
                 music = GetMusicSoundSlot("warped_biom_theme");

@@ -12,7 +12,7 @@ namespace Bosspocalyps.Backgrounds
     {
         public override bool ChooseBgStyle()
         {
-            return !Main.gameMenu && Main.LocalPlayer.GetModPlayer<AshModPlayer>().ZoneWarpedBiome;
+            return !Main.gameMenu && Main.LocalPlayer.GetModPlayer<BosspocalypsModPlayer>().ZoneWarpedBiome;
         }
 
         public override void ModifyFarFades(float[] fades, float transitionSpeed)

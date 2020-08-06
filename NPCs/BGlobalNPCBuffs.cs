@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace Bosspocalyps.NPCs
 {
-    public partial class AshGlobalNPC : GlobalNPC
+    public partial class BGlobalNPC : GlobalNPC
     {
         public bool VirusDebuff, JellyfishedDebuff;
 

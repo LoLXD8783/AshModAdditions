@@ -15,12 +15,12 @@ namespace Bosspocalyps.Buffs.Debuffs
 
         public override void Update(NPC npc, ref int buffIndex)
         {
-            npc.GetGlobalNPC<AshGlobalNPC>().VirusDebuff = true;
+            npc.GetGlobalNPC<BGlobalNPC>().VirusDebuff = true;
         }
 
         public override void Update(Player player, ref int buffIndex)
         {
-            player.GetModPlayer<AshModPlayer>().VirusDebuff = true;
+            player.GetModPlayer<BosspocalypsModPlayer>().VirusDebuff = true;
         }
     }
 }

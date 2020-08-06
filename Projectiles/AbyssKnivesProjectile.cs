@@ -63,7 +63,7 @@ namespace Bosspocalyps.Projectiles
             if (IsChildren)
             {
                 Player player = Main.player[projectile.owner];
-                AshModPlayer ashmodplayer = player.GetModPlayer<AshModPlayer>();
+                BosspocalypsModPlayer ashmodplayer = player.GetModPlayer<BosspocalypsModPlayer>();
                 if (!player.moonLeech && !target.immortal && ashmodplayer.HealingAbyssKnivesCooldown <= 0 && player.lifeSteal > 0)
                 {
                     int heal = Main.rand.Next(5) + 1;

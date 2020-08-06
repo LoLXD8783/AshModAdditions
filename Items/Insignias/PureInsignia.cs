@@ -33,7 +33,7 @@ namespace Bosspocalyps.Items.Insignias
         {
             if (player.InForest())
             {
-                player.GetModPlayer<AshModPlayer>().PureInsignia = true;
+                player.GetModPlayer<BosspocalypsModPlayer>().PureInsignia = true;
                 player.allDamage += 0.05f;
                 player.statDefense += 20;
                 player.accRunSpeed += 0.4f;

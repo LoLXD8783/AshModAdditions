@@ -42,7 +42,7 @@ namespace Bosspocalyps.Items.Weapons.Ranged
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
             int p = Projectile.NewProjectile(position, new Vector2(speedX, speedY), type, damage, knockBack, player.whoAmI);
-            Main.projectile[p].GetGlobalProjectile<AshGlobalProjectile>().FrostiteBowShot = true;
+            Main.projectile[p].GetGlobalProjectile<BGlobalProjectile>().FrostiteBowShot = true;
             return false;
         }
 

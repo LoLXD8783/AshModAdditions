@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria;
+﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Bosspocalyps.Buffs;
+using Bosspocalyps.Buffs.Minions;
 
 namespace Bosspocalyps.Projectiles
 {
@@ -49,20 +46,31 @@ namespace Bosspocalyps.Projectiles
             Animation();
 
             Player owner = Main.player[projectile.owner];
-            if(!owner.active || owner.dead)
+            if(!owner.IsAlive())
+            {
+                owner.ClearBuff(ModContent.BuffType<IceCrystalBuff>());
+                projectile.Kill();
+                return;
+            }
+            if (!owner.HasBuff<IceCrystalBuff>())
             {
                 projectile.Kill();
                 return;
             }
             projectile.timeLeft = 2;
 
-            int l = Main.projectile.Length - 1;
-            int t = projectile.type;
-            for(int i = 0; i < l; i++)
-            {
-                Projectile p = Main.projectile[i];
-                if (!p.active || p.type != t) continue;
-            }
+            if (HasOrFindTarget())
+                Target();
+            else
+                Idle();
+
+            //int l = Main.projectile.Length - 1;
+            //int t = projectile.type;
+            //for(int i = 0; i < l; i++)
+            //{
+            //    Projectile p = Main.projectile[i];
+            //    if (!p.active || p.type != t) continue;
+            //}
 
 
             //Player owner = Main.player[projectile.owner];
@@ -84,6 +92,33 @@ namespace Bosspocalyps.Projectiles
             //projectile.rotation = projectile.velocity.ToRotation();
             //if (projectile.direction == -1)
             //    projectile.rotation += MathHelper.Pi;
+        }
+
+        private NPC NPCTarget => projectile.ai[0] > 0 ? Main.npc[(int)projectile.ai[0]-1] : null;
+
+        private bool FindTarget() => (projectile.ai[0] = Helpers.ClosestHostileNPCTo(projectile.Center, 200)) > 0;
+        private bool HasOrFindTarget()
+        {
+            NPC target = NPCTarget;
+            return (target?.WithinRange(projectile.Center, 200) is true && target.active) || FindTarget();
+        }
+
+        private void Target()
+        {
+            NPC target = NPCTarget;
+            projectile.velocity = Vector2.SmoothStep(projectile.velocity, Vector2.Normalize(target.Center - projectile.Center) * 10, 0.12f);
+            Rotation();
+        }
+
+        private void Rotation() => projectile.rotation = MathHelper.Lerp(projectile.rotation, MathHelper.PiOver4/2 * MathHelper.Clamp(projectile.velocity.X, -10, 10)/10, 0.4f);
+
+        private void Idle()
+        {
+            Player owner = Main.player[projectile.owner];
+            Vector2 center = owner.MountedCenter;
+            if (!projectile.WithinRange(center, 300))
+                projectile.velocity = Vector2.SmoothStep(projectile.velocity, Vector2.Normalize(center - projectile.Center) * 10, 0.2f);
+            Rotation();
         }
 
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)

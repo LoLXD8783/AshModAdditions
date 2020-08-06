@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace Bosspocalyps
 {
-    public partial class AshModPlayer : ModPlayer
+    public partial class BosspocalypsModPlayer : ModPlayer
     {
         public bool PureInsignia, FrigidInsignia, OvergrownInsignia;
         private void InsigniaLifeRegen()
@@ -41,5 +41,7 @@ namespace Bosspocalyps
             if (OvergrownInsignia)
                 damage = (int)(damage * 0.97);
         }
+
+        private void ResetInsignias() => PureInsignia = FrigidInsignia = OvergrownInsignia = false;
     }
 }

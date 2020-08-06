@@ -31,9 +31,9 @@ namespace Bosspocalyps.Items.Weapons.Melee
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
             Vector2 speed = new Vector2(speedX, speedY);
-            Projectile.NewProjectileDirect(position, speed, type, damage, knockBack, player.whoAmI).GetGlobalProjectile<AshGlobalProjectile>().TerrarianBladeShot = true;
-            Projectile.NewProjectileDirect(position, speed.RotatedByRandom(MathHelper.PiOver4/2), type, damage, knockBack, player.whoAmI).GetGlobalProjectile<AshGlobalProjectile>().TerrarianBladeShot = true;
-            Projectile.NewProjectileDirect(position, speed.RotatedByRandom(MathHelper.PiOver4/2), type, damage, knockBack, player.whoAmI).GetGlobalProjectile<AshGlobalProjectile>().TerrarianBladeShot = true;
+            Projectile.NewProjectileDirect(position, speed, type, damage, knockBack, player.whoAmI).GetGlobalProjectile<BGlobalProjectile>().extraaitype = ExtraAIType.TerrarianBlade;
+            Projectile.NewProjectileDirect(position, speed.RotatedByRandom(MathHelper.PiOver4/2), type, damage, knockBack, player.whoAmI).GetGlobalProjectile<BGlobalProjectile>().extraaitype = ExtraAIType.TerrarianBlade;
+            Projectile.NewProjectileDirect(position, speed.RotatedByRandom(MathHelper.PiOver4/2), type, damage, knockBack, player.whoAmI).GetGlobalProjectile<BGlobalProjectile>().extraaitype = ExtraAIType.TerrarianBlade;
             
             return false;
         }

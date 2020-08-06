@@ -18,7 +18,7 @@ namespace Bosspocalyps.Buffs
 
         public override void Update(Player player, ref int buffIndex)
         {
-            player.GetModPlayer<AshModPlayer>().SandstormSpiritBuff = true;
+            player.GetModPlayer<BosspocalypsModPlayer>().SandstormSpiritBuff = true;
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Bosspocalyps
 {
-    public partial class AshModPlayer
+    public partial class BosspocalypsModPlayer
     {
         public bool IceColdPotion, SandstormSpiritBuff;
         public bool VirusDebuff, JellyfishedDebuff;

@@ -25,7 +25,7 @@ namespace Bosspocalyps.Items.Armor.Frostite
 
         public override void UpdateArmorSet(Player player)
         {
-            player.GetModPlayer<AshModPlayer>().FrostiteEffect = true;
+            player.GetModPlayer<BosspocalypsModPlayer>().FrostiteEffect = true;
         }
 
         public override void AddRecipes()
