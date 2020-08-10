@@ -127,14 +127,45 @@ namespace Bosspocalyps
         }
 
         // misc?
-        public static bool TimerHit(ref int timer, int hitmark = 60)
+        public static bool CounterHit(ref int timer, int hitmark = 60, int increment = 1)
         {
-            if(timer++ > hitmark)
+            if((timer += increment) > hitmark)
             {
                 timer = 0;
                 return true;
             }
             return false;
+        }
+
+        public static bool CounterHit(ref float timer, float hitmark = 60f, float increment = 1)
+        {
+            if((timer += increment) > hitmark)
+            {
+                timer = 0;
+                return true;
+            }
+            return false;
+        }
+
+        public static bool CounterHit(ref double timer, double hitmark = 60.0, double increment = 1.0)
+        {
+            if((timer+=increment) > hitmark)
+            {
+                timer = 0;
+                return true;
+            }
+            return false;
+        }
+
+        public static void AnimationCycle(ref int timer, int frametime, ref int frame, int minframe, int maxframe)
+        {
+            if (timer++ > frametime)
+            {
+                timer = 0;
+                int d = maxframe - minframe;
+                if (frame++ - minframe > d)
+                    frame = d;
+            }
         }
 
         // recipe

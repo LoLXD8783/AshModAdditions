@@ -53,7 +53,7 @@ namespace Bosspocalyps.Projectiles
             if (targetplayer is Player target && (target.active && !(target.dead || target.ghost)))
             {
                 projectile.velocity = Vector2.SmoothStep(projectile.velocity, Vector2.Normalize(target.MountedCenter - projectile.Center) * projectilevelocity, 0.1f);
-                if (Helpers.TimerHit(ref dusttimer, dustspawnrate))
+                if (Helpers.CounterHit(ref dusttimer, dustspawnrate))
                 {
                     for (int i = 0; i < dustammount; i++)
                     {
