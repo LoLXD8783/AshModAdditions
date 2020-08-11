@@ -23,21 +23,21 @@ namespace Bosspocalyps
         {
             instance = this;
             if (Main.dedServ) return; // below things that shouldn't load on servers
-            AddMusicBox<KingCrabsMusicBox, KingCrabsMusicBoxTile>("Crown_of_the_Crustacean_King_-_Atlantis_Mod");
-            AddMusicBox<GigawormMusicBox, GigawormMusicBoxTile>("Crossout");
-            AddMusicBox<TheIceMusicBox, TheIceMusicBoxTile>("The_Ice_Theme");
-            AddMusicBox<OceanNightMusicBox, OceanNightMusicBoxTile>("CoolSongThatsChillAF_2");
-            AddMusicBox<KingSlimeMusicBox, KingSlimeMusicBoxTile>("Spookyboiss_1");
-            AddMusicBox<EaterOfWorldsMusicBox, EaterOfWorldsMusicBoxTile>("Eater_Of_Worlds_Theme");
-            AddMusicBox<HallowNightMusicBox, HallowNightMusicBoxTile>("Hallow_Night_-_Ashmod_Theme");
-            AddMusicBox<DukeFishronMusicBox, DukeFishronMusicBoxTile>("Duke_Fishpog_Theme");
-            AddMusicBox<LunaticCultistMusicBox, LunaticCultistMusicBoxTile>("Lunatic-Cultist-Theme-Burden-of");
-            AddMusicBox<SkeletronMusicBox, SkeletronMusicBoxTile>("Pretty_Gamer_Boss");
-            AddMusicBox<WallOfFleshMusicBox, WallOfFleshMusicBoxTile>("Wall_Of_Flesh_Theme_-_Ashmod");
-            AddMusicBox<TheDestroyerMusicBox, TheDestroyerMusicBoxTile>("Destroyer_Theme_-_");
-            AddMusicBox<SkeletronPrimeMusicBox, SkeletronPrimeMusicBoxTile>("Skeletron_Prime_Is_American");
-            AddMusicBox<TyphoonMusicBox, TyphoonMusicBoxTile>("Typhoon_Warning");
-            AddMusicBox<KilographyMusicBox, KilographyMusicBoxTile>("Killography");
+            //AddMusicBox<KingCrabsMusicBox, KingCrabsMusicBoxTile>("Crown_of_the_Crustacean_King_-_Atlantis_Mod");
+            //AddMusicBox<GigawormMusicBox, GigawormMusicBoxTile>("Crossout");
+            //AddMusicBox<TheIceMusicBox, TheIceMusicBoxTile>("The_Ice_Theme");
+            //AddMusicBox<OceanNightMusicBox, OceanNightMusicBoxTile>("CoolSongThatsChillAF_2");
+            //AddMusicBox<KingSlimeMusicBox, KingSlimeMusicBoxTile>("Spookyboiss_1");
+            //AddMusicBox<EaterOfWorldsMusicBox, EaterOfWorldsMusicBoxTile>("Eater_Of_Worlds_Theme");
+            //AddMusicBox<HallowNightMusicBox, HallowNightMusicBoxTile>("Hallow_Night_-_Ashmod_Theme");
+            //AddMusicBox<DukeFishronMusicBox, DukeFishronMusicBoxTile>("Duke_Fishpog_Theme");
+            //AddMusicBox<LunaticCultistMusicBox, LunaticCultistMusicBoxTile>("Lunatic-Cultist-Theme-Burden-of");
+            //AddMusicBox<SkeletronMusicBox, SkeletronMusicBoxTile>("Pretty_Gamer_Boss");
+            //AddMusicBox<WallOfFleshMusicBox, WallOfFleshMusicBoxTile>("Wall_Of_Flesh_Theme_-_Ashmod");
+            //AddMusicBox<TheDestroyerMusicBox, TheDestroyerMusicBoxTile>("Destroyer_Theme_-_");
+            //AddMusicBox<SkeletronPrimeMusicBox, SkeletronPrimeMusicBoxTile>("Skeletron_Prime_Is_American");
+            //AddMusicBox<TyphoonMusicBox, TyphoonMusicBoxTile>("Typhoon_Warning");
+            //AddMusicBox<KilographyMusicBox, KilographyMusicBoxTile>("Killography");
         }
 
         private void AddMusicBox<TItem, TTile>(string moosic, int tileFrameY = 0) where TItem : ModItem where TTile : ModTile => AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/" + moosic), ModContent.ItemType<TItem>(), ModContent.TileType<TTile>(), tileFrameY);
