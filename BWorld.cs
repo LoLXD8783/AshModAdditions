@@ -15,7 +15,7 @@ using Bosspocalyps.Tiles.Warped;
 
 namespace Bosspocalyps 
 {
-    public class AshWorld : ModWorld
+    public class BWorld : ModWorld
     {
         public static int WarpedTiles;
         public static bool IridiumGen;

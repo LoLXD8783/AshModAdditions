@@ -7,6 +7,7 @@ using Bosspocalyps.Items.Equippables;
 using Bosspocalyps.Items.Materials;
 using Bosspocalyps.Items.Weapons.Melee;
 using Bosspocalyps.Items.Weapons.Ranged;
+using Bosspocalyps.Items.Weapons.Magic;
 
 namespace Bosspocalyps.NPCs
 {
@@ -71,13 +72,15 @@ namespace Bosspocalyps.NPCs
                         Item.NewItem(npc.getRect(), ModContent.ItemType<CombiniteBar>(), Main.rand.Next(6, 11));
                     break;
 
-                case NPCID.Retinazer:
                 case NPCID.Spazmatism:
+                    Item.NewItem(npc.getRect(), ModContent.ItemType<CursedEye>(), 1);
+                    goto case NPCID.Retinazer;
+                case NPCID.Retinazer:
                     Item.NewItem(npc.getRect(), ModContent.ItemType<UnholiteBar>(), Main.rand.Next(5, 8));
                     break;
 
                 case NPCID.MoonLordCore:
-                    AshWorld.IridiumGen = true;
+                    BWorld.IridiumGen = true;
                     break;
             }
         }

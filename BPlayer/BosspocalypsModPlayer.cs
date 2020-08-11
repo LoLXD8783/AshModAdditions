@@ -106,7 +106,7 @@ namespace Bosspocalyps
 
         public override void UpdateBiomes()
         {
-            ZoneWarpedBiome = AshWorld.WarpedTiles > 50;
+            ZoneWarpedBiome = BWorld.WarpedTiles > 50;
         }
 
         public override bool CustomBiomesMatch(Player other)
