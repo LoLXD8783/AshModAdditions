@@ -1,0 +1,1 @@
+copy ..\..\Mods\Bosspocalyps.tmod Built\wip\Bosspocalyps.tmod
